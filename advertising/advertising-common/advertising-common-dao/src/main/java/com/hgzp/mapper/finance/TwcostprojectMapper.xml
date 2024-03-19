@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.finance.TwcostprojectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twcostproject">
+        <id column="id" property="id" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="sprojectcode" property="sprojectcode" />
+        <result column="sprojectname" property="sprojectname" />
+        <result column="ssubjectname" property="ssubjectname" />
+        <result column="ssubjectcode" property="ssubjectcode" />
+        <result column="sfirstborrower" property="sfirstborrower" />
+        <result column="sfirstlender" property="sfirstlender" />
+        <result column="ncurrentborrower" property="ncurrentborrower" />
+        <result column="namountallcate" property="namountallcate" />
+        <result column="ncurrentlender" property="ncurrentlender" />
+        <result column="nyearborrower" property="nyearborrower" />
+        <result column="nyearlender" property="nyearlender" />
+        <result column="nendborrower" property="nendborrower" />
+        <result column="nendlender" property="nendlender" />
+        <result column="bankaccounthistoryid" property="bankaccounthistoryid" />
+        <result column="lastoperatorid" property="lastoperatorid" />
+        <result column="lastoperator" property="lastoperator" />
+        <result column="dlastoperatedate" property="dlastoperatedate" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createempid, createempname, dcreatetime, sprojectcode, sprojectname, ssubjectname, ssubjectcode, sfirstborrower, sfirstlender, ncurrentborrower, namountallcate, ncurrentlender, nyearborrower, nyearlender, nendborrower, nendlender, bankaccounthistoryid, lastoperatorid, lastoperator, dlastoperatedate, version
+    </sql>
+
+</mapper>

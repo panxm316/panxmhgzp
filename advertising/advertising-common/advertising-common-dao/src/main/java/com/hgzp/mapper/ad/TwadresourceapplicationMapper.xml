@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.ad.TwadresourceapplicationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twadresourceapplication">
+        <id column="id" property="id" />
+        <result column="deptid" property="deptid" />
+        <result column="deptname" property="deptname" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="customerid" property="customerid" />
+        <result column="customername" property="customername" />
+        <result column="icusttype" property="icusttype" />
+        <result column="dapplytime" property="dapplytime" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="denddate" property="denddate" />
+        <result column="sadtitle" property="sadtitle" />
+        <result column="sadcontent" property="sadcontent" />
+        <result column="applicationid" property="applicationid" />
+        <result column="iapprovestatus" property="iapprovestatus" />
+        <result column="sapprovalopinions" property="sapprovalopinions" />
+        <result column="sremark" property="sremark" />
+        <result column="contractid" property="contractid" />
+        <result column="bquickly" property="bquickly" />
+        <result column="sfirstopinion" property="sfirstopinion" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, deptid, deptname, employid, employname, customerid, customername, icusttype, dapplytime, dstartdate, denddate, sadtitle, sadcontent, applicationid, iapprovestatus, sapprovalopinions, sremark, contractid, bquickly, sfirstopinion, version
+    </sql>
+
+</mapper>

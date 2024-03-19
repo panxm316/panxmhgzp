@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TwlogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twlog">
+        <id column="id" property="id" />
+        <result column="slogtype" property="slogtype" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="soperatorip" property="soperatorip" />
+        <result column="soperatormac" property="soperatormac" />
+        <result column="doperatordate" property="doperatordate" />
+        <result column="sremark" property="sremark" />
+        <result column="ifirstdeptid" property="ifirstdeptid" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, slogtype, employid, employname, soperatorip, soperatormac, doperatordate, sremark, ifirstdeptid
+    </sql>
+
+</mapper>

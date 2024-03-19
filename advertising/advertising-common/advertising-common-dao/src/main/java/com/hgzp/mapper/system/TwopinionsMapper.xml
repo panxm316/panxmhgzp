@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TwopinionsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twopinions">
+        <id column="id" property="id" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="createdate" property="createdate" />
+        <result column="sopinion" property="sopinion" />
+        <result column="sflowtype" property="sflowtype" />
+        <result column="bcommon" property="bcommon" />
+        <result column="ipasstype" property="ipasstype" />
+        <result column="isort" property="isort" />
+        <result column="buse" property="buse" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createempid, createempname, createdate, sopinion, sflowtype, bcommon, ipasstype, isort, buse
+    </sql>
+
+</mapper>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.statistic.Twdatabackupdetail1Mapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twdatabackupdetail1">
+        <id column="id" property="id" />
+        <result column="databackupgroupid" property="databackupgroupid" />
+        <result column="orderid" property="orderid" />
+        <result column="sordernum" property="sordernum" />
+        <result column="scontractnum" property="scontractnum" />
+        <result column="adprojectid" property="adprojectid" />
+        <result column="adprojectname" property="adprojectname" />
+        <result column="ordercreateempid" property="ordercreateempid" />
+        <result column="ordercreateempname" property="ordercreateempname" />
+        <result column="ordercreatetime" property="ordercreatetime" />
+        <result column="orderibooktype" property="orderibooktype" />
+        <result column="businessentityid" property="businessentityid" />
+        <result column="businessentityname" property="businessentityname" />
+        <result column="customerid" property="customerid" />
+        <result column="customername" property="customername" />
+        <result column="scontacts" property="scontacts" />
+        <result column="saddress" property="saddress" />
+        <result column="smobilephone" property="smobilephone" />
+        <result column="spostcode" property="spostcode" />
+        <result column="deptid" property="deptid" />
+        <result column="deptname" property="deptname" />
+        <result column="iorderkind" property="iorderkind" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="agencytid" property="agencytid" />
+        <result column="agencyname" property="agencyname" />
+        <result column="agencyemployid" property="agencyemployid" />
+        <result column="agencyemployname" property="agencyemployname" />
+        <result column="agentid" property="agentid" />
+        <result column="agentname" property="agentname" />
+        <result column="agentemployid" property="agentemployid" />
+        <result column="agentemployname" property="agentemployname" />
+        <result column="adindustyid" property="adindustyid" />
+        <result column="adindustryname" property="adindustryname" />
+        <result column="adtypeid" property="adtypeid" />
+        <result column="adtypename" property="adtypename" />
+        <result column="sorderadtitle" property="sorderadtitle" />
+        <result column="sorderadcontent" property="sorderadcontent" />
+        <result column="borderuse" property="borderuse" />
+        <result column="borderdelete" property="borderdelete" />
+        <result column="sopinion" property="sopinion" />
+        <result column="iorderapprovestatus" property="iorderapprovestatus" />
+        <result column="bspecial" property="bspecial" />
+        <result column="sspecialreason" property="sspecialreason" />
+        <result column="orderitemid" property="orderitemid" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="createtime" property="createtime" />
+        <result column="ibooktype" property="ibooktype" />
+        <result column="mediatypekey" property="mediatypekey" />
+        <result column="mediatypename" property="mediatypename" />
+        <result column="mediaid" property="mediaid" />
+        <result column="medianame" property="medianame" />
+        <result column="prestartdate" property="prestartdate" />
+        <result column="preenddate" property="preenddate" />
+        <result column="foldid" property="foldid" />
+        <result column="foldname" property="foldname" />
+        <result column="foldareaverid" property="foldareaverid" />
+        <result column="foldareavername" property="foldareavername" />
+        <result column="addisplayformid" property="addisplayformid" />
+        <result column="addisplayformname" property="addisplayformname" />
+        <result column="pagesortid" property="pagesortid" />
+        <result column="pagesortname" property="pagesortname" />
+        <result column="adcolorid" property="adcolorid" />
+        <result column="adcolorname" property="adcolorname" />
+        <result column="adspecid" property="adspecid" />
+        <result column="adspecname" property="adspecname" />
+        <result column="nwidth" property="nwidth" />
+        <result column="nheight" property="nheight" />
+        <result column="weeksettingid" property="weeksettingid" />
+        <result column="weeksettingname" property="weeksettingname" />
+        <result column="foldpageplanid" property="foldpageplanid" />
+        <result column="sadtitle" property="sadtitle" />
+        <result column="sadcontent" property="sadcontent" />
+        <result column="foldpageplanname" property="foldpageplanname" />
+        <result column="baseprice" property="baseprice" />
+        <result column="priceitemid" property="priceitemid" />
+        <result column="normalprice" property="normalprice" />
+        <result column="amountreceivable" property="amountreceivable" />
+        <result column="amountreceived" property="amountreceived" />
+        <result column="amountarrearage" property="amountarrearage" />
+        <result column="ndiscountrate" property="ndiscountrate" />
+        <result column="amountachievement" property="amountachievement" />
+        <result column="dachievementdate" property="dachievementdate" />
+        <result column="namountcost" property="namountcost" />
+        <result column="iaddapprovestatus" property="iaddapprovestatus" />
+        <result column="ichangeapprovestatus" property="ichangeapprovestatus" />
+        <result column="istopapprovestatus" property="istopapprovestatus" />
+        <result column="idiscountapprovestatus" property="idiscountapprovestatus" />
+        <result column="iapprovestatus" property="iapprovestatus" />
+        <result column="ipublishstatus" property="ipublishstatus" />
+        <result column="buse" property="buse" />
+        <result column="bdelete" property="bdelete" />
+        <result column="breportreason" property="breportreason" />
+        <result column="sremark" property="sremark" />
+        <result column="iitemcode" property="iitemcode" />
+        <result column="ipublishcheckstatus" property="ipublishcheckstatus" />
+        <result column="spublishcheckcontent" property="spublishcheckcontent" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, databackupgroupid, orderid, sordernum, scontractnum, adprojectid, adprojectname, ordercreateempid, ordercreateempname, ordercreatetime, orderibooktype, businessentityid, businessentityname, customerid, customername, scontacts, saddress, smobilephone, spostcode, deptid, deptname, iorderkind, employid, employname, agencytid, agencyname, agencyemployid, agencyemployname, agentid, agentname, agentemployid, agentemployname, adindustyid, adindustryname, adtypeid, adtypename, sorderadtitle, sorderadcontent, borderuse, borderdelete, sopinion, iorderapprovestatus, bspecial, sspecialreason, orderitemid, createempid, createempname, createtime, ibooktype, mediatypekey, mediatypename, mediaid, medianame, prestartdate, preenddate, foldid, foldname, foldareaverid, foldareavername, addisplayformid, addisplayformname, pagesortid, pagesortname, adcolorid, adcolorname, adspecid, adspecname, nwidth, nheight, weeksettingid, weeksettingname, foldpageplanid, sadtitle, sadcontent, foldpageplanname, baseprice, priceitemid, normalprice, amountreceivable, amountreceived, amountarrearage, ndiscountrate, amountachievement, dachievementdate, namountcost, iaddapprovestatus, ichangeapprovestatus, istopapprovestatus, idiscountapprovestatus, iapprovestatus, ipublishstatus, buse, bdelete, breportreason, sremark, iitemcode, ipublishcheckstatus, spublishcheckcontent
+    </sql>
+
+    <select id="selectByTablename" parameterType="Map" resultMap="BaseResultMap">
+        SELECT * FROM ${tablename}
+        WHERE prestartdate &lt; #{endTime}
+        <if test="startTime != null ">
+            and prestartdate >= #{startTime}
+        </if>
+        <if test="mediaid != null ">
+            and mediaid = #{mediaid}
+        </if>
+        <if test="deptid != null ">
+            and deptid = #{deptid}
+        </if>
+        <if test="employid != null ">
+            and employid = #{employid}
+        </if>
+        <if test="customerName != null and customerName != '' ">
+            and customerName like CONCAT('%', #{customerName}, '%')
+        </if>
+        order by prestartdate DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+    <select id="getCountByTable" parameterType="Map" resultType="java.lang.Long">
+        select COUNT(*)
+        from ${tablename}
+        WHERE prestartdate &lt; #{endTime}
+        <if test="startTime != null ">
+            and prestartdate >= #{startTime}
+        </if>
+        <if test="mediaid != null ">
+            and mediaid = #{mediaid}
+        </if>
+        <if test="deptid != null ">
+            and deptid = #{deptid}
+        </if>
+        <if test="employid != null ">
+            and employid = #{employid}
+        </if>
+        <if test="customerName != null and customerName != '' ">
+            and customerName like CONCAT('%', #{customerName}, '%')
+        </if>
+        order by prestartdate DESC
+    </select>
+
+    <insert id="updateDataBackupDetail" parameterType="Map">
+        INSERT INTO ${tablename} (databackupgroupid, orderid, sordernum, scontractnum, adprojectid, adprojectname,
+        ordercreateempid, ordercreateempname,
+        ordercreatetime, orderibooktype, businessentityid, businessentityname, customerid, customername, scontacts,
+        saddress,
+        smobilephone, spostcode, deptid, deptname, iorderkind, employid, employname, agencytid, agencyname,
+        agencyemployid,
+        agencyemployname, agentid, agentname, agentemployid, agentemployname, adindustyid, adindustryname, adtypeid,
+        adtypename,
+        sorderadtitle, sorderadcontent, borderuse, borderdelete, sopinion, iorderapprovestatus, bspecial,
+        sspecialreason, orderitemid,
+        createempid, createempname, createtime, ibooktype, mediatypekey, mediatypename, mediaid, medianame,
+        prestartdate, preenddate,
+        foldid, foldname, foldareaverid, foldareavername, addisplayformid, addisplayformname, pagesortid, pagesortname,
+        adcolorid,
+        adcolorname, adspecid, adspecname, nwidth, nheight, weeksettingid, weeksettingname, foldpageplanid, sadtitle,
+        sadcontent,
+        foldpageplanname, baseprice, priceitemid, normalprice, amountreceivable, amountreceived, amountarrearage,
+        ndiscountrate,
+        amountachievement, dachievementdate, namountcost, iaddapprovestatus, ichangeapprovestatus, istopapprovestatus,
+        idiscountapprovestatus,
+        iapprovestatus, ipublishstatus, buse, bdelete, breportreason, sremark, iitemcode, ipublishcheckstatus,
+        spublishcheckcontent)
+        select #{databackupgroupid} as t, o.id,o.sordernum,o.scontractnum,o.adprojectid,o.adprojectname,
+        o.createempid, o.createempname,
+        o.createtime, o.ibooktype, o.businessentityid, o.businessentityname, o.customerid, o.customername, o.scontacts,
+        o.saddress,
+        o.smobilephone, o.spostcode, o.deptid, o.deptname, o.iorderkind, o.employid, o.employname, o.agencytid,
+        o.agencyname, o.agencyemployid,
+        o.agencyemployname, o.agentid, o.agentname, o.agentemployid, o.agentemployname, o.adindustyid, o.adindustryname,
+        o.adtypeid, o.adtypename,
+        o.sadtitle, o.sadcontent, o.buse, o.bdelete, o.sopinion, o.iapprovestatus, o.bspecial, o.sspecialreason, i.id,
+        i.createempid, i.createempname, i.createtime,
+        i.ibooktype, i.mediatypekey, i.mediatypename, i.mediaid, i.medianame, i.prestartdate, i.preenddate,
+        i.foldid, i.foldname, i.foldareaverid, i.foldareavername, i.addisplayformid, i.addisplayformname, i.pagesortid,
+        i.pagesortname, i.adcolorid,
+        i.adcolorname, i.adspecid, i.adspecname, i.nwidth, i.nheight, i.weeksettingid, i.weeksettingname,
+        i.foldpageplanid, i.sadtitle, i.sadcontent,
+        i.foldpageplanname, i.baseprice, i.priceitemid, i.normalprice, i.amountreceivable, i.amountreceived,
+        i.amountarrearage, i.ndiscountrate,
+        i.amountachievement, i.dachievementdate, i.namountcost, i.iaddapprovestatus, i.ichangeapprovestatus,
+        i.istopapprovestatus, i.idiscountapprovestatus,
+        i.iapprovestatus, i.ipublishstatus, i.buse, i.bdelete, i.breportreason, i.sremark, i.iitemcode,
+        i.ipublishcheckstatus, i.spublishcheckcontent
+        from tworderitem as i
+        INNER JOIN tworder AS o ON i.orderid = o.id
+        where i.prestartdate &lt; #{endTime}
+        <if test="startTime != null ">
+            and i.prestartdate >= #{startTime}
+        </if>
+    </insert>
+</mapper>

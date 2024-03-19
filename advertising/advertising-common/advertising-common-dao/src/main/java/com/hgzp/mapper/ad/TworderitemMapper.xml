@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.ad.TworderitemMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tworderitem">
+        <id column="id" property="id"/>
+        <result column="orderid" property="orderid"/>
+        <result column="sordernum" property="sordernum"/>
+        <result column="scontractnum" property="scontractnum"/>
+        <result column="createempid" property="createempid"/>
+        <result column="createempname" property="createempname"/>
+        <result column="createtime" property="createtime"/>
+        <result column="ibooktype" property="ibooktype"/>
+        <result column="mediatypekey" property="mediatypekey"/>
+        <result column="mediatypename" property="mediatypename"/>
+        <result column="mediaid" property="mediaid"/>
+        <result column="medianame" property="medianame"/>
+        <result column="prestartdate" property="prestartdate"/>
+        <result column="preenddate" property="preenddate"/>
+        <result column="foldid" property="foldid"/>
+        <result column="foldname" property="foldname"/>
+        <result column="foldareaverid" property="foldareaverid"/>
+        <result column="foldareavername" property="foldareavername"/>
+        <result column="addisplayformid" property="addisplayformid"/>
+        <result column="addisplayformname" property="addisplayformname"/>
+        <result column="sadtitle" property="sadtitle"/>
+        <result column="sadcontent" property="sadcontent"/>
+        <result column="pagesortid" property="pagesortid"/>
+        <result column="pagesortname" property="pagesortname"/>
+        <result column="adcolorid" property="adcolorid"/>
+        <result column="adcolorname" property="adcolorname"/>
+        <result column="adspecid" property="adspecid"/>
+        <result column="adspecname" property="adspecname"/>
+        <result column="nwidth" property="nwidth"/>
+        <result column="nheight" property="nheight"/>
+        <result column="weeksettingid" property="weeksettingid"/>
+        <result column="weeksettingname" property="weeksettingname"/>
+        <result column="foldpageplanid" property="foldpageplanid"/>
+        <result column="foldpageplanname" property="foldpageplanname"/>
+        <result column="baseprice" property="baseprice"/>
+        <result column="priceitemid" property="priceitemid"/>
+        <result column="normalprice" property="normalprice"/>
+        <result column="amountreceivable" property="amountreceivable"/>
+        <result column="amountreceived" property="amountreceived"/>
+        <result column="amountarrearage" property="amountarrearage"/>
+        <result column="ndiscountrate" property="ndiscountrate"/>
+        <result column="amountachievement" property="amountachievement"/>
+        <result column="dachievementdate" property="dachievementdate"/>
+        <result column="namountcost" property="namountcost"/>
+        <result column="iaddapprovestatus" property="iaddapprovestatus"/>
+        <result column="ichangeapprovestatus" property="ichangeapprovestatus"/>
+        <result column="istopapprovestatus" property="istopapprovestatus"/>
+        <result column="idiscountapprovestatus" property="idiscountapprovestatus"/>
+        <result column="iapprovestatus" property="iapprovestatus"/>
+        <result column="ipublishstatus" property="ipublishstatus"/>
+        <result column="buse" property="buse"/>
+        <result column="bdelete" property="bdelete"/>
+        <result column="breportreason" property="breportreason"/>
+        <result column="sremark" property="sremark"/>
+        <result column="iitemcode" property="iitemcode"/>
+        <result column="ipublishcheckstatus" property="ipublishcheckstatus"/>
+        <result column="spublishcheckcontent" property="spublishcheckcontent"/>
+        <result column="relateorderid" property="relateorderid"/>
+        <result column="sfilename" property="sfilename" />
+        <result column="version" property="version"/>
+    </resultMap>
+
+    <!-- 广告刊发查询映射结果 -->
+    <resultMap id="OrderPublishResultMap" type="com.hgzp.pagemodel.schedule.OrderPublishQueryResultVo">
+        <id column="id" property="id"/>
+        <result column="scontractnum" property="scontractnum"/>
+        <result column="adprojectname" property="adprojectname"/>
+        <result column="customername" property="customername"/>
+        <result column="agencyname" property="agencyname"/>
+        <result column="agentname" property="agentname"/>
+        <result column="adindustryname" property="adindustryname"/>
+        <result column="amountreceivable" property="amountreceivable"/>
+        <result column="amountreceived" property="amountreceived"/>
+        <result column="amountarrearage" property="amountarrearage"/>
+        <result column="sadtitle" property="sadtitle"/>
+        <result column="prestartdate" property="prestartdate"/>
+        <result column="foldname" property="foldname"/>
+        <result column="foldareavername" property="foldareavername"/>
+        <result column="addisplayformname" property="addisplayformname"/>
+        <result column="pagesortname" property="pagesortname"/>
+        <result column="adcolorname" property="adcolorname"/>
+        <result column="adspecname" property="adspecname"/>
+        <result column="ipublishstatus" property="ipublishstatus"/>
+        <result column="ipublishcheckstatus" property="ipublishcheckstatus"/>
+        <result column="spublishcheckcontent" property="spublishcheckcontent"/>
+        <result column="scontacts" property="scontacts"/>
+        <result column="saddress" property="saddress"/>
+        <result column="smobilephone" property="smobilephone"/>
+        <result column="spostcode" property="spostcode"/>
+        <result column="medianame" property="medianame"/>
+        <result column="createtime" property="createtime"/>
+        <result column="employname" property="employname"/>
+        <result column="foldpageplanname" property="foldpageplanname"/>
+        <result column="arrangefoldname" property="arrangefoldname"/>
+        <result column="arrangefoldareavername" property="arrangefoldareavername"/>
+        <result column="arrangefoldpageplanname" property="arrangefoldpageplanname"/>
+        <result column="mediaid" property="mediaid"/>
+        <result column="foldid" property="foldid"/>
+        <result column="foldareaverid" property="foldareaverid"/>
+        <result column="mediatypekey" property="mediatypekey"/>
+        <result column="foldpageplanid" property="foldpageplanid"/>
+        <result column="sremark" property="sremark"/>
+        <result column="arrangefoldareaverid" property="arrangefoldareaverid"/>
+        <result column="spublishedurl" property="spublishedurl"/>
+    </resultMap>
+
+    <!-- 任务额度汇总查询映射结果 -->
+    <resultMap id="TaskCountResultMap" type="com.hgzp.pagemodel.business.TaskCountVo">
+        <id column="id" property="id"/>
+        <result column="orderid" property="orderid"/>
+        <result column="deptid" property="deptid"/>
+        <result column="employid" property="employid"/>
+        <result column="amountreceivable" property="amountreceivable"/>
+        <result column="amountreceived" property="amountreceived"/>
+        <result column="amountarrearage" property="amountarrearage"/>
+        <result column="amountachievement" property="amountachievement"/>
+    </resultMap>
+
+    <!-- 明细订单成本汇总查询映射结果 -->
+    <resultMap id="OrderItemCostResultMap" type="com.hgzp.pagemodel.ad.AdOrderItemCostVO">
+        <id column="scontractnum" property="scontractnum"/>
+        <result column="sordernum" property="sordernum"/>
+        <result column="adprojectname" property="adprojectname"/>
+        <result column="customername" property="customername"/>
+        <result column="agencyname" property="agencyname"/>
+        <result column="agentname" property="agentname"/>
+        <result column="adindustryname" property="adindustryname"/>
+        <result column="amountreceivable" property="amountreceivable"/>
+        <result column="amountreceived" property="amountreceived"/>
+        <result column="amountarrearage" property="amountarrearage"/>
+        <result column="medianame" property="medianame"/>
+        <result column="prestartdate" property="prestartdate"/>
+        <result column="sadtitle" property="sadtitle"/>
+        <result column="namountcost" property="namountcost"/>
+        <result column="sdescription" property="sdescription"/>
+        <result column="createempname" property="createempname"/>
+        <result column="dcreatedate" property="dcreatedate"/>
+    </resultMap>
+
+    <!-- 广告明细订单应收金额汇总查询映射结果 -->
+    <resultMap id="AdSummaryResultMap" type="com.hgzp.pagemodel.ad.AdSummaryVO">
+        <result column="amountreceivable" property="amountreceivable"/>
+    </resultMap>
+
+    <!-- 页面订单查询映射结果 -->
+    <resultMap id="PageOrderResultMap" type="com.hgzp.pagemodel.schedule.PageOrderItemVo">
+        <result column="id" property="id"/>
+        <result column="ipublishstatus" property="ipublishstatus"/>
+        <result column="dpublishdate" property="dpublishdate"/>
+        <result column="nwidth" property="nwidth"/>
+        <result column="nheight" property="nheight"/>
+        <result column="nleftx" property="nleftx"/>
+        <result column="ntopy" property="ntopy"/>
+        <result column="employname" property="employname"/>
+        <result column="agencyemployname" property="agencyemployname"/>
+        <result column="agentemployname" property="agentemployname"/>
+        <result column="adcolorname" property="adcolorname"/>
+        <result column="adspecname" property="adspecname"/>
+    </resultMap>
+
+    <resultMap id="OrderAndItemResultMap" type="com.hgzp.pagemodel.business.OrderAndItemDTO">
+        <result column="orderid" property="orderid"/>
+        <result column="adprojectname" property="adprojectname"/>
+        <result column="scontractnum" property="scontractnum"/>
+        <result column="employid" property="employid"/>
+        <result column="employname" property="employname"/>
+        <result column="customername" property="customername"/>
+        <result column="agencyname" property="agencyname"/>
+        <result column="agentname" property="agentname"/>
+        <result column="adindustryname" property="adindustryname"/>
+        <result column="orderitemid" property="orderitemid"/>
+        <result column="mediatypename" property="mediatypename"/>
+        <result column="medianame" property="medianame"/>
+        <result column="prestartdate" property="prestartdate"/>
+        <result column="amountreceivable" property="amountreceivable"/>
+        <result column="amountreceived" property="amountreceived"/>
+        <result column="amountarrearage" property="amountarrearage"/>
+        <result column="namountcost" property="namountcost"/>
+        <result column="amountachievement" property="amountachievement"/>
+        <result column="dachievementdate" property="dachievementdate"/>
+        <result column="foldname" property="foldname"/>
+        <result column="foldareavername" property="foldareavername"/>
+        <result column="addisplayformname" property="addisplayformname"/>
+        <result column="pagesortname" property="pagesortname"/>
+        <result column="adcolorname" property="adcolorname"/>
+        <result column="adspecname" property="adspecname"/>
+        <result column="nwidth" property="nwidth"/>
+        <result column="nheight" property="nheight"/>
+        <result column="weeksettingname" property="weeksettingname"/>
+        <result column="sadtitle" property="sadtitle"/>
+        <result column="foldpageplanname" property="foldpageplanname"/>
+        <result column="iitemcode" property="iitemcode"/>
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        orderid,
+        sordernum,
+        scontractnum,
+        createempid,
+        createempname,
+        createtime,
+        ibooktype,
+        mediatypekey,
+        mediatypename,
+        mediaid,
+        medianame,
+        prestartdate,
+        preenddate,
+        foldid,
+        foldname,
+        foldareaverid,
+        foldareavername,
+        addisplayformid,
+        addisplayformname,
+        sadtitle,
+        sadcontent,
+        pagesortid,
+        pagesortname,
+        adcolorid,
+        adcolorname,
+        adspecid,
+        adspecname,
+        nwidth,
+        nheight,
+        weeksettingid,
+        weeksettingname,
+        foldpageplanid,
+        foldpageplanname,
+        baseprice,
+        priceitemid,
+        normalprice,
+        amountreceivable,
+        amountreceived,
+        dachievementdate,
+        amountarrearage,
+        ndiscountrate,
+        amountachievement,
+        namountcost,
+        iaddapprovestatus,
+        ichangeapprovestatus,
+        istopapprovestatus,
+        idiscountapprovestatus,
+        iapprovestatus,
+        ipublishstatus,
+        buse,
+        bdelete,
+        breportreason,
+        sremark,
+        iitemcode,
+        ipublishcheckstatus,
+        spublishcheckcontent,
+        relateorderid,
+        sfilename,
+        version
+    </sql>
+
+    <select id="queryOredrPublishCount" parameterType="Map">
+        select COUNT(*)
+        from tworderitem as ro
+        where ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        and ro.bdelete = 0
+        <if test="foldId != null and foldId != ''">
+            and foldid = #{foldId,jdbcType=VARCHAR}
+        </if>
+        <if test="areaverId != null and areaverId != ''">
+            and foldareaverid = #{areaverId,jdbcType=VARCHAR}
+        </if>
+        <choose>
+            <when test="publishstatus != null">
+                and ro.ipublishstatus = #{publishstatus,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and (ro.ipublishstatus = 2 or ro.ipublishstatus = 3 or ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+            </otherwise>
+        </choose>
+        and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        order by prestartdate DESC
+    </select>
+
+    <select id="queryOredrPublishList" resultMap="OrderPublishResultMap" parameterType="Map">
+        select ro.id,
+               ro.addisplayformname,
+               ro.amountreceivable,
+               ro.amountreceived,
+               ro.amountarrearage,
+               ro.sadtitle,
+               ro.foldname,
+               ro.foldareavername,
+               ro.adcolorname,
+               ro.adspecname,
+               ro.prestartdate,
+               ro.ipublishstatus,
+               ro.ipublishcheckstatus,
+               ro.spublishcheckcontent,
+               so.scontractnum,
+               so.adprojectname,
+               so.customername,
+               so.adindustryname,
+               so.agentname,
+               so.agencyname,
+               so.scontacts,
+               so.saddress,
+               so.smobilephone,
+               so.spostcode,
+               bo.foldareavername as arrangefoldareavername,
+               bo.foldname as arrangefoldname,
+               bo.foldpageplanname as arrangefoldpageplanname,
+               ro.mediaid,
+               ro.foldid,
+               ro.foldareaverid,
+               ro.mediatypekey,
+               bo.foldpageplanid,
+               bo.sremark,
+               bo.foldareaverid as arrangefoldareaverid,
+               bo.spublishedurl
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id
+                 LEFT  JOIN tworderitemarrange AS bo ON ro.id = bo.orderitemid
+        where ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        and ro.bdelete = 0
+        <if test="foldId != null and foldId != ''">
+            and ro.foldid = #{foldId,jdbcType=VARCHAR}
+        </if>
+        <if test="areaverId != null and areaverId != ''">
+            and ro.foldareaverid = #{areaverId,jdbcType=VARCHAR}
+        </if>
+        <choose>
+            <when test="publishstatus != null">
+                and ro.ipublishstatus = #{publishstatus,jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and (ro.ipublishstatus = 2 or ro.ipublishstatus = 3 or ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+            </otherwise>
+        </choose>
+        and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        order by prestartdate DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="queryCheckOredrListCount" parameterType="Map">
+        select COUNT(*)
+        from tworderitem as ro
+        where ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+          and ro.bdelete = 0
+          and (ro.ipublishcheckstatus = 1 or ro.ipublishcheckstatus = 2)
+          and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        order by prestartdate DESC
+    </select>
+
+    <select id="queryCheckOredrList" resultMap="OrderPublishResultMap" parameterType="Map">
+        select ro.id,
+               ro.addisplayformname,
+               ro.amountreceivable,
+               ro.amountreceived,
+               ro.amountarrearage,
+               ro.sadtitle,
+               ro.foldname,
+               ro.foldareavername,
+               ro.adcolorname,
+               ro.adspecname,
+               ro.prestartdate,
+               ro.ipublishstatus,
+               ro.ipublishcheckstatus,
+               ro.spublishcheckcontent,
+               so.scontractnum,
+               so.adprojectname,
+               so.customername,
+               so.adindustryname,
+               so.agentname,
+               so.agencyname,
+               so.scontacts,
+               so.saddress,
+               so.smobilephone,
+               so.spostcode
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id
+        where ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+          and ro.bdelete = 0
+          and (ro.ipublishcheckstatus = 1 or ro.ipublishcheckstatus = 2)
+          and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        order by prestartdate DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="queryDepartmentTaskCountList" resultMap="TaskCountResultMap" parameterType="Map">
+        select ro.id,
+               ro.orderid,
+               ROUND(sum(ro.amountreceivable * (bo.archievementrate / 100)), 2)  amountreceivable,
+               ROUND(sum(ro.amountreceived * (bo.archievementrate / 100)), 2)    amountreceived,
+               ROUND(sum(ro.amountarrearage * (bo.archievementrate / 100)), 2)   amountarrearage,
+               ROUND(sum(ro.amountachievement * (bo.archievementrate / 100)), 2) amountachievement,
+               bo.deptid
+        from tworderitembelong as bo
+                 INNER JOIN tworderitem AS ro ON ro.id = bo.orderitemid
+        where ro.iapprovestatus = 2
+        <if test="mediaId != null and mediaId != ''">
+            and ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        </if>
+        <if test="publishstatus != null and publishstatus != ''">
+            and (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+        </if>
+        <if test="startTime != null and startTime != ''">
+            and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+        <if test="null != ids and ids.size > 0">
+            and bo.deptid in
+            <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        GROUP BY bo.deptid
+        order by prestartdate DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="queryEmployeTaskCountList" resultMap="TaskCountResultMap" parameterType="Map">
+        select ro.id,
+               ro.orderid,
+               ROUND(sum(ro.amountreceivable * (bo.archievementrate / 100)), 2)  amountreceivable,
+               ROUND(sum(ro.amountreceived * (bo.archievementrate / 100)), 2)    amountreceived,
+               ROUND(sum(ro.amountarrearage * (bo.archievementrate / 100)), 2)   amountarrearage,
+               ROUND(sum(ro.amountachievement * (bo.archievementrate / 100)), 2) amountachievement,
+               bo.employid
+        from tworderitembelong as bo
+                 INNER JOIN tworderitem AS ro ON ro.id = bo.orderitemid
+        where ro.iapprovestatus = 2
+        <if test="mediaId != null and mediaId != ''">
+            and ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        </if>
+        <if test="publishstatus != null and publishstatus != ''">
+            and (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+        </if>
+        <if test="startTime != null and startTime != ''">
+            and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+        <if test="null != ids and ids.size > 0">
+            and bo.employid in
+            <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        GROUP BY bo.employid
+        order by prestartdate DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="summaryReceivable" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(amountreceivable), 2) amountreceivable
+        from tworderitem where createtime BETWEEN #{lastStartTime,jdbcType=VARCHAR} and #{lastEndTime,jdbcType=VARCHAR}
+                           and prestartdate BETWEEN #{thisStartTime,jdbcType=VARCHAR} and #{thisEndTime,jdbcType=VARCHAR}
+                           and orderid in (select id from tworder where adprojectid = #{adprojectId,jdbcType=VARCHAR})
+                           and buse = 1
+                           and iapprovestatus = 2
+                           and bdelete = 0
+        <choose>
+            <when test="summaryType != null">
+                and (ipublishstatus = 4 or ipublishstatus = 5)
+            </when>
+            <otherwise>
+                and (ipublishstatus = 0 or ipublishstatus = 2 or ipublishstatus = 3)
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="summaryHistoryReceivable" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(amountreceivable), 2) amountreceivable
+        from tworderitem
+        where prestartdate BETWEEN #{lastStartTime,jdbcType=VARCHAR} and #{lastEndTime,jdbcType=VARCHAR}
+          and bdelete = 0
+          and orderid in (select id
+                          from tworder
+                          where adprojectid = #{adprojectId,jdbcType=VARCHAR}
+                            and buse = 1
+                            and iapprovestatus = 2)
+    </select>
+
+    <select id="summaryReceivableHistory" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(amountreceivable), 2) amountreceivable
+        from tworderitem
+        where prestartdate BETWEEN #{lastStartTime,jdbcType=VARCHAR} and #{lastEndTime,jdbcType=VARCHAR}
+          and bdelete = 0
+          and orderid in (select id from tworder where adprojectid = #{adprojectId,jdbcType=VARCHAR})
+    </select>
+
+    <select id="summaryOrderCost" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(namountcost), 2) amountreceivable
+        from tworderitemcost
+        where istatus = 1
+          and orderitemid in (select id
+                              from tworderitem
+                              where orderid in
+                                    (select id from tworder where adprojectid = #{adprojectId,jdbcType=VARCHAR}))
+    </select>
+
+    <select id="queryAdProjectOredrDetails" resultMap="OrderPublishResultMap" parameterType="Map">
+        select ro.id,
+               ro.addisplayformname,
+               ro.amountreceivable,
+               ro.amountreceived,
+               ro.amountarrearage,
+               ro.sadtitle,
+               ro.foldname,
+               ro.foldareavername,
+               ro.adcolorname,
+               ro.adspecname,
+               ro.prestartdate,
+               ro.ipublishstatus,
+               ro.ipublishcheckstatus,
+               ro.spublishcheckcontent,
+               so.scontractnum,
+               so.adprojectname,
+               so.customername,
+               so.adindustryname,
+               so.agentname,
+               so.agencyname,
+               so.scontacts,
+               so.saddress,
+               so.smobilephone,
+               so.spostcode
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id
+        where so.adprojectid = #{projectId,jdbcType=VARCHAR}
+          and ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+          and ro.bdelete = 0
+        order by prestartdate DESC
+    </select>
+
+    <select id="queryAdProjectOredrDetailsWithTime" resultMap="OrderPublishResultMap" parameterType="Map">
+        select ro.id,
+               ro.addisplayformname,
+               ro.amountreceivable,
+               ro.amountreceived,
+               ro.amountarrearage,
+               ro.sadtitle,
+               ro.foldname,
+               ro.foldareavername,
+               ro.adcolorname,
+               ro.adspecname,
+               ro.prestartdate,
+               ro.ipublishstatus,
+               ro.ipublishcheckstatus,
+               ro.spublishcheckcontent,
+               ro.medianame,
+               ro.createtime,
+               so.scontractnum,
+               so.adprojectname,
+               so.customername,
+               so.adindustryname,
+               so.agentname,
+               so.agencyname,
+               so.scontacts,
+               so.saddress,
+               so.smobilephone,
+               so.spostcode
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id and so.buse = 1 and so.iapprovestatus = 2
+        where so.adprojectid = #{projectId,jdbcType=VARCHAR}
+          and ro.createtime BETWEEN #{lastStartTime,jdbcType=VARCHAR} and #{lastEndTime,jdbcType=VARCHAR}
+          and ro.prestartdate BETWEEN #{thisStartTime,jdbcType=VARCHAR} and #{thisEndTime,jdbcType=VARCHAR}
+          and ro.bdelete = 0
+        <if test="mediaId != null and mediaId != ''">
+            and ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        </if>
+        <choose>
+            <when test="summaryType != null">
+                and (ipublishstatus = 4 or ipublishstatus = 5)
+            </when>
+            <otherwise>
+                and (ipublishstatus = 0 or ipublishstatus = 1 or ipublishstatus = 2 or ipublishstatus = 3)
+            </otherwise>
+        </choose>
+        order by prestartdate DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="queryHistoryAdProjectOredrDetailsWithTime" resultMap="OrderPublishResultMap" parameterType="Map">
+        select ro.id,
+               ro.addisplayformname,
+               ro.amountreceivable,
+               ro.amountreceived,
+               ro.amountarrearage,
+               ro.sadtitle,
+               ro.foldname,
+               ro.foldareavername,
+               ro.adcolorname,
+               ro.adspecname,
+               ro.prestartdate,
+               ro.ipublishstatus,
+               ro.ipublishcheckstatus,
+               ro.spublishcheckcontent,
+               ro.medianame,
+               ro.createtime,
+               so.scontractnum,
+               so.adprojectname,
+               so.customername,
+               so.adindustryname,
+               so.agentname,
+               so.agencyname,
+               so.scontacts,
+               so.saddress,
+               so.smobilephone,
+               so.spostcode
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id and so.buse = 1 and so.iapprovestatus = 2
+        where so.adprojectid = #{projectId,jdbcType=VARCHAR}
+          and ro.prestartdate BETWEEN #{lastStartTime,jdbcType=VARCHAR} and #{lastEndTime,jdbcType=VARCHAR}
+          and ro.bdelete = 0
+        <if test="mediaId != null and mediaId != ''">
+            and ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        </if>
+        order by prestartdate DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="queryAdProjectOredrDetailsWithTimeCount" parameterType="Map">
+        select COUNT(*)
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id and so.buse = 1 and so.iapprovestatus = 2
+        where so.adprojectid = #{projectId,jdbcType=VARCHAR}
+          and ro.createtime BETWEEN #{lastStartTime,jdbcType=VARCHAR} and #{lastEndTime,jdbcType=VARCHAR}
+          and ro.prestartdate BETWEEN #{thisStartTime,jdbcType=VARCHAR} and #{thisEndTime,jdbcType=VARCHAR}
+          and ro.bdelete = 0
+        <if test="mediaId != null and mediaId != ''">
+            and ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        </if>
+        <choose>
+            <when test="summaryType != null">
+                and (ipublishstatus = 4 or ipublishstatus = 5)
+            </when>
+            <otherwise>
+                and (ipublishstatus = 0 or ipublishstatus = 1 or ipublishstatus = 2 or ipublishstatus = 3)
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="queryHistoryAdProjectOredrDetailsWithTimeCount" parameterType="Map">
+        select COUNT(*)
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id and so.buse = 1 and so.iapprovestatus = 2
+        where so.adprojectid = #{projectId,jdbcType=VARCHAR}
+          and ro.prestartdate BETWEEN #{lastStartTime,jdbcType=VARCHAR} and #{lastEndTime,jdbcType=VARCHAR}
+          and ro.bdelete = 0
+        <if test="mediaId != null and mediaId != ''">
+            and ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="queryOrderItemCostList" resultMap="OrderItemCostResultMap" parameterType="Map">
+        select ro.id,
+               so.customername,
+               so.agencyname,
+               so.agentname,
+               so.adindustryname,
+               ro.medianame,
+               ro.amountreceivable,
+               ro.amountreceived,
+               ro.amountarrearage,
+               ro.sadtitle,
+               ro.prestartdate,
+               so.scontractnum,
+               so.sordernum,
+               (bo.sname)          adprojectname,
+               sum(co.namountcost) namountcost,
+               co.sdescription,
+               co.createempname,
+               co.dcreatedate
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id and so.buse = 1 and so.iapprovestatus = 2 and
+                                             so.adprojectid = #{projectId,jdbcType=VARCHAR}
+                 INNER JOIN twadproject AS bo ON bo.id = #{projectId,jdbcType=VARCHAR}
+                 LEFT JOIN tworderitemcost AS co ON co.orderitemid = ro.id
+        where ro.bdelete = 0
+        GROUP BY ro.id
+        order by ro.prestartdate DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+    <select id="queryOrderItemCostCount" parameterType="Map">
+        select ro.id
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id and so.buse = 1 and so.iapprovestatus = 2 and
+                                             so.adprojectid = #{projectId,jdbcType=VARCHAR}
+                 INNER JOIN twadproject AS bo ON bo.id = #{projectId,jdbcType=VARCHAR}
+                 LEFT JOIN tworderitemcost AS co ON co.orderitemid = ro.id
+        where ro.bdelete = 0
+        GROUP BY ro.id
+        order by ro.prestartdate DESC
+    </select>
+
+    <select id="queryPageOrderItemList" resultMap="PageOrderResultMap" parameterType="Map">
+        select ro.id,
+               ro.ipublishstatus,
+               ao.dpublishdate,
+               ao.nwidth,
+               ao.nheight,
+               ao.nleftx,
+               ao.ntopy,
+               bo.employname,
+               bo.agencyemployname,
+               bo.agentemployname,
+               ro.adcolorname,
+               ro.adspecname
+        from tworderitem as ro
+                 INNER JOIN tworderitemarrange as ao
+                            on ao.orderitemid = ro.id and ao.foldpageplanid = #{pageId,jdbcType=VARCHAR}
+                 INNER JOIN tworder as bo on ro.orderid = bo.id
+        where ro.bdelete = 0
+    </select>
+    <select id="queryNewMediaOrderItemList" resultMap="PageOrderResultMap" parameterType="Map">
+        select ro.id,
+               ro.ipublishstatus,
+               ao.dpublishdate,
+               ao.nwidth,
+               ao.nheight,
+               ao.nleftx,
+               ao.ntopy,
+               bo.employname,
+               bo.agencyemployname,
+               bo.agentemployname,
+               ro.adcolorname,
+               ro.adspecname from  tworderitem as ro
+            INNER JOIN tworderitemarrange as ao on ao.orderitemid = ro.id
+        <if test="formId != null and formId != ''">
+            and ao.addisplayformid = #{formId,jdbcType=VARCHAR}
+        </if>
+        and ao.dpublishdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+            INNER JOIN tworder as bo on ro.orderid = bo.id
+        WHERE ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        and ro.bdelete = 0
+        <if test="foldId != null and foldId != ''">
+            and ro.foldid = #{foldId,jdbcType=VARCHAR}
+        </if>
+        <if test="areaverId != null and areaverId != ''">
+            and ro.foldareaverid = #{areaverId,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="queryOredrPredetermineList" resultMap="OrderPublishResultMap" parameterType="Map">
+        select ro.foldpageplanname,
+               so.employname,
+               ro.id,
+               ro.addisplayformname,
+               ro.amountreceivable,
+               ro.amountreceived,
+               ro.amountarrearage,
+               ro.sadtitle,
+               ro.foldname,
+               ro.foldareavername,
+               ro.adcolorname,
+               ro.adspecname,
+               ro.prestartdate,
+               ro.ipublishstatus,
+               ro.ipublishcheckstatus,
+               ro.spublishcheckcontent,
+               so.scontractnum,
+               so.adprojectname,
+               so.customername,
+               so.adindustryname,
+               so.agentname,
+               so.agencyname,
+               so.scontacts,
+               so.saddress,
+               so.smobilephone,
+               so.spostcode
+        from tworderitem as ro
+                 INNER JOIN tworder AS so ON ro.orderid = so.id
+        where ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+          and (ro.ipublishstatus = 0 or ro.ipublishstatus = 1)
+          and ro.bdelete = 0
+        <if test="foldId != null and foldId != ''">
+            and foldid = #{foldId,jdbcType=VARCHAR}
+        </if>
+        <if test="areaverId != null and areaverId != ''">
+            and foldareaverid = #{areaverId,jdbcType=VARCHAR}
+        </if>
+        and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        order by prestartdate DESC
+    </select>
+
+    <select id="getSumAchievement" parameterType="Map" resultMap="BaseResultMap">
+        SELECT sum(i.amountachievement * b.archievementrate / 100) AS amountachievement,
+               sum(i.amountreceivable)                             AS amountreceivable,
+               sum(i.amountreceived)                               AS amountreceived,
+               sum(i.amountarrearage)                              AS amountarrearage
+        FROM tworderitembelong AS b
+                 INNER JOIN tworderitem AS i ON b.orderitemid = i.id
+                 inner join tworder as o on i.orderid = o.id
+        WHERE i.prestartdate &lt; #{endTime}
+        <if test="startTime != null">
+            and i.prestartdate >= #{startTime}
+        </if>
+        <if test="employid != null and employid != ''">
+            and b.employid = #{employid,jdbcType=VARCHAR}
+        </if>
+        <if test="mediaid != null and mediaid != ''">
+            and i.mediaid = #{mediaid,jdbcType=VARCHAR}
+        </if>
+        <if test="customerid != null and mediaid != ''">
+            and o.customerid = #{customerid}
+        </if>
+        <if test="deptidList != null and deptidList.size > 0">
+            and b.deptid in
+            <foreach collection="deptidList" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+    <select id="getSumCustomerAchievement" parameterType="Map" resultMap="BaseResultMap">
+        SELECT sum(i.amountachievement) AS amountachievement,
+               sum(i.amountreceivable)  AS amountreceivable,
+               sum(i.amountreceived)    AS amountreceived,
+               sum(i.amountarrearage)   AS amountarrearage
+        FROM tworderitem AS i
+                 inner join tworder as o on i.orderid = o.id
+        WHERE i.prestartdate &lt; #{endTime}
+        <if test="startTime != null">
+            and i.prestartdate >= #{startTime}
+        </if>
+        <if test="mediaid != null and mediaid != ''">
+            and i.mediaid = #{mediaid,jdbcType=VARCHAR}
+        </if>
+        <if test="customerid != null and mediaid != ''">
+            and o.customerid = #{customerid}
+        </if>
+    </select>
+
+    <select id="selectOrderAndItemList" resultMap="OrderAndItemResultMap" parameterType="Map">
+        select o.id as orderid,
+               o.adprojectname,
+               o.scontractnum,
+               o.employid,
+               o.employname,
+               o.customername,
+               o.agencyname,
+               o.agentname,
+               o.adindustryname,
+               i.id as orderitemid,
+               i.mediatypename,
+               i.medianame,
+               i.prestartdate,
+               i.amountreceivable,
+               i.amountreceived,
+               i.amountarrearage,
+               i.namountcost,
+               i.amountachievement,
+               i.dachievementdate,
+               i.foldname,
+               i.foldareavername,
+               i.addisplayformname,
+               i.pagesortname,
+               i.adcolorname,
+               i.adspecname,
+               i.nwidth,
+               i.nheight,
+               i.weeksettingname,
+               i.sadtitle,
+               i.foldpageplanname,
+               i.iitemcode
+        from tworderitem as i
+                 INNER JOIN tworder AS o ON i.orderid = o.id
+        where i.prestartdate &lt; #{endTime}
+        <if test="startTime != null">
+            and i.prestartdate >= #{startTime}
+        </if>
+        <if test="mediaid != null and mediaid != ''">
+            and i.mediaid = #{mediaid}
+        </if>
+        <if test="customerid != null and customerid != ''">
+            and o.customerid = #{customerid,jdbcType=VARCHAR}
+        </if>
+        order by prestartdate DESC, scontractnum DESC, iitemcode desc
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="getOrderAndItemCount" parameterType="Map" resultType="java.lang.Long">
+        SELECT count(*)
+        from tworderitem as i
+                 INNER JOIN tworder AS o ON i.orderid = o.id
+        where i.prestartdate &lt; #{endTime}
+        <if test="startTime != null">
+            and i.prestartdate >= #{startTime}
+        </if>
+        <if test="mediaid != null and mediaid != ''">
+            and i.mediaid = #{mediaid}
+        </if>
+        <if test="customerid != null and customerid != ''">
+            and o.customerid = #{customerid,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="getSumMyOrderItem" parameterType="Map" resultMap="OrderAndItemResultMap">
+        SELECT sum(i.namountcost)       as namountcost,
+               sum(i.amountachievement) as amountachievement,
+               sum(i.amountreceivable)  as amountreceivable,
+               sum(i.amountreceived)    as amountreceived,
+               sum(i.amountarrearage)   as amountarrearage
+        FROM tworderitem as i
+                 JOIN tworder as o on i.orderid = o.id
+        WHERE i.prestartdate >= #{startTime}
+        <if test="endTime != null">
+            and i.prestartdate &lt; #{endTime}
+        </if>
+        <if test="employid != null and employid != ''">
+            and EXISTS (select 1
+                        from tworderitembelong
+                        where employid = #{employid,jdbcType=VARCHAR} and orderitemid = i.id)
+        </if>
+        <if test="deptidList != null and deptidList.size > 0">
+            and o.deptid in
+            (
+            <foreach collection="deptidList" item="item" separator=",">
+                #{item}
+            </foreach>
+            )
+        </if>
+        <if test="queryKey != null and queryKey != ''">
+            AND (i.scontractnum LIKE CONCAT('%', #{queryKey,jdbcType=VARCHAR}, '%')
+                OR o.adprojectname LIKE CONCAT('%', #{queryKey,jdbcType=VARCHAR}, '%'))
+        </if>
+        <if test="barrearsflag != null and barrearsflag">
+            and i.amountarrearage > 0
+        </if>
+        <if test="publishStatus != null">
+            and i.ipublishstatus = #{publishStatus, jdbcType=INTEGER}
+        </if>
+    </select>
+</mapper>

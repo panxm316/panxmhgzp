@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.price.TbpricegroupMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbpricegroup">
+        <id column="id" property="id" />
+        <result column="sname" property="sname" />
+        <result column="mediatypekey" property="mediatypekey" />
+        <result column="mediatypename" property="mediatypename" />
+        <result column="syear" property="syear" />
+        <result column="bdefault" property="bdefault" />
+        <result column="isort" property="isort" />
+        <result column="buse" property="buse" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, sname, mediatypekey, mediatypename, syear, bdefault, isort, buse, sremark
+    </sql>
+
+</mapper>

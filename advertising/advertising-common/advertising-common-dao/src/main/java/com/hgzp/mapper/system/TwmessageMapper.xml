@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TwmessageMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twmessage">
+        <id column="id" property="id" />
+        <result column="stitle" property="stitle" />
+        <result column="scontent" property="scontent" />
+        <result column="sparam" property="sparam" />
+        <result column="stype" property="stype" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="createempid" property="createempid" />
+        <result column="receiveempid" property="receiveempid" />
+        <result column="breaded" property="breaded" />
+        <result column="bdeleted" property="bdeleted" />
+        <result column="sflowid" property="sflowid" />
+        <result column="sprocessinstanceid" property="sprocessinstanceid" />
+        <result column="suniqueid" property="suniqueid" />
+        <result column="dprocessinstancecreate" property="dprocessinstancecreate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, stitle, scontent, sparam, stype, dcreatetime, createempid, receiveempid, breaded, bdeleted, sflowid, sprocessinstanceid, suniqueid, dprocessinstancecreate
+    </sql>
+
+    <select id="getMessageCount" resultType="com.hgzp.pagemodel.system.MessageCountMapperVo" parameterType="java.lang.String">
+        select message.id as messageId, message.receiveempid as receiveEmpId, messagecount.count as messageCount, message.scontent as messageContent, message.stitle as messageTitle,
+               message.stype as messageType, message.dcreatetime as messageCreateTime, message.sprocessinstanceid as messageProcessInstanceId, message.createempid as createEmpId,
+               message.dprocessinstancecreate as messageProcessInstanceCreate
+        from twmessage message
+                 join
+             (select t.receiveempid, max(t.dcreatetime) as maxtime from twmessage t where t.breaded = 0 and t.bdeleted = 0 group by t.receiveempid) messagemax
+             on message.receiveempid = messagemax.receiveempid and message.dcreatetime = messagemax.maxtime
+                 join
+             (select m.receiveempid, count(*) as count from twmessage m where m.breaded = 0 and m.bdeleted = 0 group by m.receiveempid) messagecount
+             on message.receiveempid = messagecount.receiveempid
+        <if test="receiveEmpId != null">
+            where message.receiveempid = #{receiveEmpId}
+        </if>
+    </select>
+</mapper>

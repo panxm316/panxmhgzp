@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.upkongzhi {
+  position: relative;
+}
+
+.el-upload--picture-card .kongzhi i {
+  font-size: 20px;
+  color: #fff;
+  margin: 20px;
+}
+.upkongzhi:hover .kongzhi {
+  display: block;
+}
+.kongzhi {
+  position: absolute;
+  width: 146px;
+  height: 146px;
+  display: none;
+  background-image: url(../../images/touming.png);
+}
+.el-upload--picture-card {
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  background-image: url(../../images/shangchuan1.png);
+  background-size: cover;
+}
+
+.choosefile {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  margin-right: 30px;
+  color: #fff;
+  background-color: #409eff; /* rgb(0,162,212);*/
+  border-color: #357ebd;
+}
+#webuploader {
+  display: inline-block;
+}

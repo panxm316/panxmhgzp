@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.ad.TwadprojectfilesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twadprojectfiles">
+        <id column="id" property="id" />
+        <result column="adprojectid" property="adprojectid" />
+        <result column="sfileformat" property="sfileformat" />
+        <result column="sfileid" property="sfileid" />
+        <result column="sfilesize" property="sfilesize" />
+        <result column="soriginalfile" property="soriginalfile" />
+        <result column="sfiletype" property="sfiletype" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="employid" property="employid" />
+        <result column="sdescription" property="sdescription" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, adprojectid, sfileformat, sfileid, sfilesize, soriginalfile, sfiletype, dcreatetime, employid, sdescription
+    </sql>
+
+</mapper>

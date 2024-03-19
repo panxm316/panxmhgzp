@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TbroleactionscopeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbroleactionscope">
+        <id column="id" property="id" />
+        <result column="roleactionid" property="roleactionid" />
+        <result column="sscopeid" property="sscopeid" />
+        <result column="sbusinessid" property="sbusinessid" />
+        <result column="ball" property="ball" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, roleactionid, sscopeid, sbusinessid, ball
+    </sql>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TbroleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbrole">
+        <id column="id" property="id" />
+        <result column="sname" property="sname" />
+        <result column="ball" property="ball" />
+        <result column="sdesc" property="sdesc" />
+        <result column="iroletype" property="iroletype" />
+        <result column="bselfrole" property="bselfrole" />
+        <result column="sdeptscope" property="sdeptscope" />
+        <result column="buse" property="buse" />
+        <result column="isort" property="isort" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, sname, ball, sdesc, iroletype, bselfrole, sdeptscope, buse, isort
+    </sql>
+
+    <select id="selectScope" resultType="java.util.Map" statementType="STATEMENT">
+        ${sql}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.price.TbcommissionrategroupMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbcommissionrategroup">
+        <id column="id" property="id" />
+        <result column="commissionrategroupname" property="commissionrategroupname" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="nrateofcustomer" property="nrateofcustomer" />
+        <result column="nrateofagency" property="nrateofagency" />
+        <result column="nrateofagent" property="nrateofagent" />
+        <result column="nrateofrisk" property="nrateofrisk" />
+        <result column="buse" property="buse" />
+        <result column="bdefault" property="bdefault" />
+        <result column="sremark" property="sremark" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="createdate" property="createdate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, commissionrategroupname, dstartdate, nrateofcustomer, nrateofagency, nrateofagent, nrateofrisk, buse, bdefault, sremark, createempid, createempname, createdate
+    </sql>
+
+</mapper>

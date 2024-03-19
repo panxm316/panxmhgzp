@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.ad.TworderitembelongMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tworderitembelong">
+        <id column="id" property="id" />
+        <result column="orderitemid" property="orderitemid" />
+        <result column="sordernum" property="sordernum" />
+        <result column="scontractnum" property="scontractnum" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="createtime" property="createtime" />
+        <result column="deptid" property="deptid" />
+        <result column="deptname" property="deptname" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="employtype" property="employtype" />
+        <result column="archievementrate" property="archievementrate" />
+        <result column="taskrate" property="taskrate" />
+        <result column="commissionrate" property="commissionrate" />
+        <result column="bprimary" property="bprimary" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, orderitemid, sordernum, scontractnum, createempid, createempname, createtime, deptid, deptname, employid, employname, employtype, archievementrate, taskrate, commissionrate, bprimary, sremark
+    </sql>
+
+</mapper>

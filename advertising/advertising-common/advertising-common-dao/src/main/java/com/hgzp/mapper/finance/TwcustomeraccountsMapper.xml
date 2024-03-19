@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.finance.TwcustomeraccountsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twcustomeraccounts">
+        <id column="id" property="id" />
+        <result column="customerid" property="customerid" />
+        <result column="customername" property="customername" />
+        <result column="icusttype" property="icusttype" />
+        <result column="namountbalance" property="namountbalance" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="lastoperatorid" property="lastoperatorid" />
+        <result column="lastoperator" property="lastoperator" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, customerid, customername, icusttype, namountbalance, dcreatetime, lastoperatorid, lastoperator, sremark
+    </sql>
+
+</mapper>

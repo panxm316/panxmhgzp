@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TbmenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbmenu">
+        <id column="id" property="id" />
+        <result column="parentid" property="parentid" />
+        <result column="sname" property="sname" />
+        <result column="idepth" property="idepth" />
+        <result column="sfunctionurl" property="sfunctionurl" />
+        <result column="scomponent" property="scomponent" />
+        <result column="srouterpath" property="srouterpath" />
+        <result column="sclass" property="sclass" />
+        <result column="sgroup" property="sgroup" />
+        <result column="simageurl" property="simageurl" />
+        <result column="sothername" property="sothername" />
+        <result column="bmenushow" property="bmenushow" />
+        <result column="broleflag" property="broleflag" />
+        <result column="sremark" property="sremark" />
+        <result column="isort" property="isort" />
+        <result column="buse" property="buse" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, parentid, sname, idepth, sfunctionurl, scomponent, srouterpath, sclass, sgroup, simageurl, sothername, bmenushow, broleflag, sremark, isort, buse
+    </sql>
+
+</mapper>

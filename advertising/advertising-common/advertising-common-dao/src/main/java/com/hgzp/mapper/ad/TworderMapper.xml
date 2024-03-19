@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.ad.TworderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tworder">
+        <id column="id" property="id" />
+        <result column="sordernum" property="sordernum" />
+        <result column="adprojectid" property="adprojectid" />
+        <result column="adprojectname" property="adprojectname" />
+        <result column="scontractnum" property="scontractnum" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="createtime" property="createtime" />
+        <result column="ibooktype" property="ibooktype" />
+        <result column="businessentityid" property="businessentityid" />
+        <result column="businessentityname" property="businessentityname" />
+        <result column="customerid" property="customerid" />
+        <result column="customername" property="customername" />
+        <result column="scontacts" property="scontacts" />
+        <result column="saddress" property="saddress" />
+        <result column="smobilephone" property="smobilephone" />
+        <result column="spostcode" property="spostcode" />
+        <result column="deptid" property="deptid" />
+        <result column="deptname" property="deptname" />
+        <result column="iorderkind" property="iorderkind" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="agencytid" property="agencytid" />
+        <result column="agencyname" property="agencyname" />
+        <result column="agencyemployid" property="agencyemployid" />
+        <result column="agencyemployname" property="agencyemployname" />
+        <result column="agentid" property="agentid" />
+        <result column="agentname" property="agentname" />
+        <result column="agentemployid" property="agentemployid" />
+        <result column="agentemployname" property="agentemployname" />
+        <result column="adindustyid" property="adindustyid" />
+        <result column="adindustryname" property="adindustryname" />
+        <result column="adtypeid" property="adtypeid" />
+        <result column="adtypename" property="adtypename" />
+        <result column="sadtitle" property="sadtitle" />
+        <result column="sadcontent" property="sadcontent" />
+        <result column="buse" property="buse" />
+        <result column="bdelete" property="bdelete" />
+        <result column="ipreapprovestatus" property="ipreapprovestatus" />
+        <result column="iaddapprovestatus" property="iaddapprovestatus" />
+        <result column="ichangeapprovestatus" property="ichangeapprovestatus" />
+        <result column="istopapprovestatus" property="istopapprovestatus" />
+        <result column="idiscountapprovestatus" property="idiscountapprovestatus" />
+        <result column="sopinion" property="sopinion" />
+        <result column="sremark" property="sremark" />
+        <result column="iapprovestatus" property="iapprovestatus" />
+        <result column="bspecial" property="bspecial" />
+        <result column="sspecialreason" property="sspecialreason" />
+        <result column="relateorderid" property="relateorderid" />
+        <result column="specialprojectid" property="specialprojectid" />
+        <result column="specialprojectname" property="specialprojectname" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <resultMap id="CJAdPrinDTOResultMap" type="com.hgzp.pagemodel.api.CJAdPrinDTO">
+        <result column="inforid" property="inforid" />
+        <result column="custid" property="custid" />
+        <result column="custname" property="custname" />
+        <result column="kinddetid" property="kinddetid" />
+        <result column="adkind" property="adkind" />
+        <result column="publdate" property="publdate" />
+        <result column="pubrequest" property="pubrequest" />
+        <result column="filedate" property="filedate" />
+        <result column="foretimes" property="foretimes" />
+        <result column="arrtimes" property="arrtimes" />
+        <result column="pubtimes" property="pubtimes" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, sordernum, adprojectid, adprojectname, scontractnum, createempid, createempname, createtime, ibooktype, businessentityid, businessentityname, customerid, customername, scontacts, saddress, smobilephone, spostcode, deptid, deptname, iorderkind, employid, employname, agencytid, agencyname, agencyemployid, agencyemployname, agentid, agentname, agentemployid, agentemployname, adindustyid, adindustryname, adtypeid, adtypename, sadtitle, sadcontent, buse, bdelete, ipreapprovestatus, iaddapprovestatus, ichangeapprovestatus, istopapprovestatus, idiscountapprovestatus, sopinion, sremark, iapprovestatus, bspecial, sspecialreason, relateorderid, specialprojectid, specialprojectname, version
+    </sql>
+
+    <select id="selectOrderAndItemListForCJ" resultMap="CJAdPrinDTOResultMap" parameterType="Map">
+        SELECT
+            i.sordernum,
+            o.customerid,
+            o.customername,
+            o.adindustyid,
+            o.adindustryname,
+            i.prestartdate,
+            '指定刊期' AS pubrequest,
+            '' AS filedate,
+            i.foretimes,
+            c.arrtimes,
+            d.pubtimes
+        FROM
+            (
+                SELECT
+                    sordernum,
+                    orderid,
+                    prestartdate,
+                    count(*) AS foretimes
+                FROM
+                    tworderitem AS i
+                WHERE
+                    buse = true
+                  AND addisplayformname = '分类广告'
+                  AND prestartdate BETWEEN #{startTime}
+                    AND #{endTime}
+                  AND foldid= #{FoldId}
+                  <if test="FoldVer !=null and FoldVer!='' ">
+                  AND foldareaverid = #{FoldVer}
+                    </if>
+        <if test="FoldPage !=null and FoldPage!='' ">
+            AND pagesortname = #{FoldPage}
+        </if>
+
+                GROUP BY
+        orderid
+            ) as i
+                LEFT OUTER JOIN tworder o ON i.orderid = o.id
+                LEFT OUTER JOIN ( SELECT orderid, count(*) AS arrtimes FROM tworderitem WHERE buse = true AND addisplayformname = '分类广告'
+                                                                                     AND ipublishstatus = #{Arrange}  GROUP BY orderid ) c ON i.orderid = c.orderid
+                LEFT OUTER JOIN ( SELECT orderid, count(*) AS pubtimes FROM tworderitem WHERE  buse = true AND addisplayformname = '分类广告'
+                                                                                     AND ipublishstatus = #{End} GROUP BY orderid ) d ON i.orderid = d.orderid
+    </select>
+</mapper>

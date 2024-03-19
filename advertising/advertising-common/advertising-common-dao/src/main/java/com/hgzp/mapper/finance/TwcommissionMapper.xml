@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.finance.TwcommissionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twcommission">
+        <id column="id" property="id"/>
+        <result column="orderid" property="orderid"/>
+        <result column="orderitemid" property="orderitemid"/>
+        <result column="orderitemcode" property="orderitemcode"/>
+        <result column="scontractnum" property="scontractnum"/>
+        <result column="createempid" property="createempid"/>
+        <result column="createempname" property="createempname"/>
+        <result column="dcreatetime" property="dcreatetime"/>
+        <result column="deptid" property="deptid"/>
+        <result column="deptname" property="deptname"/>
+        <result column="employid" property="employid"/>
+        <result column="employname" property="employname"/>
+        <result column="employtype" property="employtype"/>
+        <result column="bprimary" property="bprimary"/>
+        <result column="customerid" property="customerid"/>
+        <result column="customername" property="customername"/>
+        <result column="amountachievement" property="amountachievement"/>
+        <result column="archievementrate" property="archievementrate"/>
+        <result column="namountcost" property="namountcost"/>
+        <result column="nrateofrisk" property="nrateofrisk"/>
+        <result column="commissionrategroupid" property="commissionrategroupid"/>
+        <result column="commissionrateitemid" property="commissionrateitemid"/>
+        <result column="ncommissionrate" property="ncommissionrate"/>
+        <result column="ncommission" property="ncommission"/>
+        <result column="sremark" property="sremark"/>
+        <result column="icommissionstatus" property="icommissionstatus"/>
+        <result column="bcancel" property="bcancel"/>
+        <result column="relatedid" property="relatedid"/>
+        <result column="dconfirmdate" property="dconfirmdate"/>
+        <result column="confirmempid" property="confirmempid"/>
+        <result column="confirmempname" property="confirmempname"/>
+        <result column="sconfirmremark" property="sconfirmremark"/>
+        <result column="dpaydate" property="dpaydate"/>
+        <result column="payempid" property="payempid"/>
+        <result column="payempname" property="payempname"/>
+        <result column="spayremark" property="spayremark"/>
+        <result column="version" property="version"/>
+    </resultMap>
+
+    <resultMap id="OrderItemAndCommission" type="com.hgzp.pagemodel.business.OrderItemAndCommissionDTO">
+        <result column="amountachievement" property="amountachievement"/>
+        <result column="amountreceivable" property="amountreceivable"/>
+        <result column="amountreceived" property="amountreceived"/>
+        <result column="amountarrearage" property="amountarrearage"/>
+        <result column="namountcost" property="namountcost"/>
+        <result column="ncommission" property="ncommission"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id
+        , orderid, orderitemid, orderitemcode, scontractnum, createempid, createempname, dcreatetime, deptid, deptname, employid, employname, employtype, bprimary, customerid, customername, amountachievement, archievementrate, namountcost, nrateofrisk, commissionrategroupid, commissionrateitemid, ncommissionrate, ncommission, sremark, icommissionstatus, bcancel, relatedid, dconfirmdate, confirmempid, confirmempname, sconfirmremark, dpaydate, payempid, payempname, spayremark, version
+    </sql>
+
+    <select id="getSumCommission" parameterType="Map" resultMap="OrderItemAndCommission">
+        SELECT
+        sum( c.ncommission ) as ncommission,
+        sum( i.namountcost ) as namountcost,
+        sum( i.amountachievement ) as amountachievement,
+        sum( i.amountreceivable ) as amountreceivable,
+        sum( i.amountreceived ) as amountreceived,
+        sum( i.amountarrearage ) as amountarrearage
+        FROM
+        twcommission as c
+        INNER JOIN tworderitem as i ON c.orderitemid = i.id
+        WHERE
+        c.dcreatetime >= #{startTime}
+        and (c.icommissionstatus = 1 or c.icommissionstatus = 2)
+        <if test="endTime != null ">
+            and c.dcreatetime &lt; #{endTime}
+        </if>
+        <if test="employid !=null and employid!='' ">
+            and c.employid = #{employid,jdbcType=VARCHAR}
+        </if>
+        <if test="deptidList !=null and deptidList.size > 0 ">
+            and c.deptid in
+            <foreach collection="deptidList" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+</mapper>

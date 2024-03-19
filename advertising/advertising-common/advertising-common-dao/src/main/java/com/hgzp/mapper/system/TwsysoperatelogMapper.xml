@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TwsysoperatelogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twsysoperatelog">
+        <id column="id" property="id" />
+        <result column="slogtype" property="slogtype" />
+        <result column="slogname" property="slogname" />
+        <result column="stablename" property="stablename" />
+        <result column="recordmasterid" property="recordmasterid" />
+        <result column="recordslaveid" property="recordslaveid" />
+        <result column="soldvalue" property="soldvalue" />
+        <result column="snewvalue" property="snewvalue" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="soperateip" property="soperateip" />
+        <result column="soperatemac" property="soperatemac" />
+        <result column="soperatetime" property="soperatetime" />
+        <result column="soperatesql" property="soperatesql" />
+        <result column="soperatesqlparam" property="soperatesqlparam" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, slogtype, slogname, stablename, recordmasterid, recordslaveid, soldvalue, snewvalue, employid, employname, soperateip, soperatemac, soperatetime, soperatesql, soperatesqlparam, sremark
+    </sql>
+
+</mapper>

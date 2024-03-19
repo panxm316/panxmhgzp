@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.finance.TwbankaccounthistoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twbankaccounthistory">
+        <id column="id" property="id" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="sfileformat" property="sfileformat" />
+        <result column="sfileid" property="sfileid" />
+        <result column="sfilesize" property="sfilesize" />
+        <result column="soriginalfile" property="soriginalfile" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="ifilecategory" property="ifilecategory" />
+        <result column="sdescription" property="sdescription" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, employid, employname, sfileformat, sfileid, sfilesize, soriginalfile, dcreatetime, ifilecategory, sdescription
+    </sql>
+
+</mapper>

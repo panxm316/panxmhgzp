@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.statistic.TwdatabackupgroupMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twdatabackupgroup">
+        <id column="id" property="id" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="databackupname" property="databackupname" />
+        <result column="datatype" property="datatype" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="denddate" property="denddate" />
+        <result column="nrecordsize" property="nrecordsize" />
+        <result column="sdetailtablename" property="sdetailtablename" />
+        <result column="sdescription" property="sdescription" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createempid, createempname, dcreatetime, databackupname, datatype, dstartdate, denddate, nrecordsize, sdetailtablename, sdescription
+    </sql>
+
+</mapper>

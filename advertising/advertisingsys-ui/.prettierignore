@@ -1,0 +1,9 @@
+/dist/*
+/public/*
+/node_modules/**
+
+**/*.svg
+**/*.sh
+*.js
+
+src/assets

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.finance.TwbankaccountsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twbankaccounts">
+        <id column="id" property="id" />
+        <result column="sborroweraccount" property="sborroweraccount" />
+        <result column="sborrowername" property="sborrowername" />
+        <result column="slenderaccount" property="slenderaccount" />
+        <result column="slendername" property="slendername" />
+        <result column="dtradedate" property="dtradedate" />
+        <result column="scredentialtype" property="scredentialtype" />
+        <result column="namount" property="namount" />
+        <result column="namountallocate" property="namountallocate" />
+        <result column="stradecode" property="stradecode" />
+        <result column="sdetailtype" property="sdetailtype" />
+        <result column="stradetype" property="stradetype" />
+        <result column="sremark" property="sremark" />
+        <result column="bankaccounthistoryid" property="bankaccounthistoryid" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="lastoperatorid" property="lastoperatorid" />
+        <result column="lastoperator" property="lastoperator" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, sborroweraccount, sborrowername, slenderaccount, slendername, dtradedate, scredentialtype, namount, namountallocate, stradecode, sdetailtype, stradetype, sremark, bankaccounthistoryid, dcreatetime, lastoperatorid, lastoperator, version
+    </sql>
+
+</mapper>

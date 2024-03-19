@@ -1,0 +1,52 @@
+spring:
+  application:
+    # 会自动根据服务名拉取dataid对应的配置文件，如果dataid跟服务名不一致，需要手动指定dataid
+    name: hg-advertisingsys
+  profiles:
+    active: '@spring.active@'
+  cloud:
+    bootstrap:
+      enabled: true
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: ${NACOS_HOST}:${NACOS_PORT}
+        metadata:
+          user.name: ${spring.security.user.name}
+          user.password: ${spring.security.user.password}
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+        namespace: ${NACOS_NAMESPACE}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        namespace: ${NACOS_NAMESPACE}
+        file-extension: yml
+#        group: peij
+        shared-configs:
+          - data-id: ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+            refresh: true
+            #默认是deault-group
+
+  security:
+    user:
+      name: admin
+      password: ENC(f1lJWqIpvq8OPVDdPshU0dstRkW0vEMuzJ0b7mrBchcbYmzFZy5fL4fp24lO7hT6)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+# 禁止Actuator监控Redis连接
+  health:
+    redis:
+      enabled: false
+
+logging:
+  level:
+    com.alibaba.nacos.client: error
+  file:
+    name: logs/advertisingsys/error.log

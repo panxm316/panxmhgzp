@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.business.TwbankaccountallocateMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twbankaccountallocate">
+        <id column="id" property="id" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="bankaccountid" property="bankaccountid" />
+        <result column="invoiceid" property="invoiceid" />
+        <result column="invoice" property="invoice" />
+        <result column="namountallcate" property="namountallcate" />
+        <result column="bassignorder" property="bassignorder" />
+        <result column="orderid" property="orderid" />
+        <result column="scontractnum" property="scontractnum" />
+        <result column="sdescription" property="sdescription" />
+        <result column="istatus" property="istatus" />
+        <result column="sremark" property="sremark" />
+        <result column="lastoperatorid" property="lastoperatorid" />
+        <result column="lastoperator" property="lastoperator" />
+        <result column="dlastmodifydate" property="dlastmodifydate" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createempid, createempname, dcreatetime, bankaccountid, invoiceid, invoice, namountallcate, bassignorder, orderid, scontractnum, sdescription, istatus, sremark, lastoperatorid, lastoperator, dlastmodifydate, version
+    </sql>
+
+</mapper>

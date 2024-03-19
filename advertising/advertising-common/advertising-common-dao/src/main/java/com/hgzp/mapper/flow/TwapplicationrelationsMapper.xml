@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.flow.TwapplicationrelationsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twapplicationrelations">
+        <id column="id" property="id" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="flowtype" property="flowtype" />
+        <result column="approvetype" property="approvetype" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="mainid" property="mainid" />
+        <result column="childid" property="childid" />
+        <result column="iapprovestatus" property="iapprovestatus" />
+        <result column="applicationid" property="applicationid" />
+        <result column="sapprovalopinions" property="sapprovalopinions" />
+        <result column="dlastmodifydate" property="dlastmodifydate" />
+        <result column="newcustomerid" property="newcustomerid" />
+        <result column="newbusinessentityid" property="newbusinessentityid" />
+        <result column="bchangebelong" property="bchangebelong" />
+        <result column="bchangeitem" property="bchangeitem" />
+        <result column="bstopitem" property="bstopitem" />
+        <result column="schangecontent" property="schangecontent" />
+        <result column="schangereason" property="schangereason" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createempid, createempname, flowtype,approvetype, dcreatetime, mainid, childid, iapprovestatus, applicationid, sapprovalopinions, dlastmodifydate, newcustomerid, newbusinessentityid, bchangebelong, bchangeitem, bstopitem, schangecontent, schangereason
+    </sql>
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.flow.TbflowMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbflow">
+        <id column="id" property="id" />
+        <result column="sname" property="sname" />
+        <result column="skey" property="skey" />
+        <result column="sdesc" property="sdesc" />
+        <result column="isort" property="isort" />
+        <result column="bactive" property="bactive" />
+        <result column="buse" property="buse" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, sname, skey, sdesc, isort, bactive, buse
+    </sql>
+
+</mapper>

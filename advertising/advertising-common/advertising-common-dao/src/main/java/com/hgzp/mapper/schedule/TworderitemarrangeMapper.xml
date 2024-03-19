@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.schedule.TworderitemarrangeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tworderitemarrange">
+        <id column="id" property="id" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="orderid" property="orderid" />
+        <result column="orderitemid" property="orderitemid" />
+        <result column="mediatypekey" property="mediatypekey" />
+        <result column="mediatypename" property="mediatypename" />
+        <result column="mediaid" property="mediaid" />
+        <result column="medianame" property="medianame" />
+        <result column="dpublishdate" property="dpublishdate" />
+        <result column="dpublishenddate" property="dpublishenddate" />
+        <result column="foldid" property="foldid" />
+        <result column="foldname" property="foldname" />
+        <result column="foldareaverid" property="foldareaverid" />
+        <result column="foldareavername" property="foldareavername" />
+        <result column="addisplayformid" property="addisplayformid" />
+        <result column="addisplayformname" property="addisplayformname" />
+        <result column="pagesortid" property="pagesortid" />
+        <result column="pagesortname" property="pagesortname" />
+        <result column="adcolorid" property="adcolorid" />
+        <result column="adcolorname" property="adcolorname" />
+        <result column="adspecid" property="adspecid" />
+        <result column="adspecname" property="adspecname" />
+        <result column="nwidth" property="nwidth" />
+        <result column="nheight" property="nheight" />
+        <result column="foldpageplanid" property="foldpageplanid" />
+        <result column="foldpageplanname" property="foldpageplanname" />
+        <result column="publishnum" property="publishnum" />
+        <result column="sadtitle" property="sadtitle" />
+        <result column="sadcontent" property="sadcontent" />
+        <result column="sremark" property="sremark" />
+        <result column="editorid" property="editorid" />
+        <result column="editorname" property="editorname" />
+        <result column="nleftx" property="nleftx" />
+        <result column="ntopy" property="ntopy" />
+        <result column="spublishedurl" property="spublishedurl" />
+        <result column="lastoperatorid" property="lastoperatorid" />
+        <result column="lastoperator" property="lastoperator" />
+        <result column="dlastmodifydate" property="dlastmodifydate" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createempid, createempname, dcreatetime, orderid, orderitemid, mediatypekey, mediatypename, mediaid, medianame, dpublishdate, dpublishenddate, foldid, foldname, foldareaverid, foldareavername, addisplayformid, addisplayformname, pagesortid, pagesortname, adcolorid, adcolorname, adspecid, adspecname, nwidth, nheight, foldpageplanid, foldpageplanname, publishnum, sadtitle, sadcontent, sremark, editorid, editorname, nleftx, ntopy, spublishedurl, lastoperatorid, lastoperator, dlastmodifydate, version
+    </sql>
+
+</mapper>

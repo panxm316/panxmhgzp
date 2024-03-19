@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.price.TbdiscountreduceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbdiscountreduce">
+        <id column="id" property="id" />
+        <result column="commissionrategroupid" property="commissionrategroupid" />
+        <result column="commissionrategroupname" property="commissionrategroupname" />
+        <result column="ndiscountstart" property="ndiscountstart" />
+        <result column="ndiscountend" property="ndiscountend" />
+        <result column="nrateofcustomer" property="nrateofcustomer" />
+        <result column="nrateofagency" property="nrateofagency" />
+        <result column="nrateofagent" property="nrateofagent" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, commissionrategroupid, commissionrategroupname, ndiscountstart, ndiscountend, nrateofcustomer, nrateofagency, nrateofagent
+    </sql>
+
+</mapper>

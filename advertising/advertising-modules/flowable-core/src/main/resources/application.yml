@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: cxygzl-core-app
+  datasource:
+    url: jdbc:mysql://192.168.50.113:3306/hgcyaddb?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: yuqing
+    password: '!Hg123456'
+
+server:
+  port: 26858
+
+logging:
+  config: classpath:logback.xml
+
+node:
+  data:
+    store: remoteNodeDataStore
+biz:
+  url: http://127.0.0.1:8111/advertising/flow
+
+#  不需要表单引擎 idm引擎
+flowable:
+  common:
+    app:
+      idm-url: /a.html
+      idm-admin:
+        user: a
+        password: a
+  form:
+    enabled: false
+  idm:
+    enabled: false

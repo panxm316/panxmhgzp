@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.ad.TbadindustryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbadindustry">
+        <id column="id" property="id" />
+        <result column="parentid" property="parentid" />
+        <result column="sname" property="sname" />
+        <result column="slocalid" property="slocalid" />
+        <result column="idepth" property="idepth" />
+        <result column="sdesc" property="sdesc" />
+        <result column="sremark" property="sremark" />
+        <result column="sfilepath" property="sfilepath" />
+        <result column="sfilename" property="sfilename" />
+        <result column="isort" property="isort" />
+        <result column="bclassified" property="bclassified" />
+        <result column="picturepath" property="picturepath" />
+        <result column="buse" property="buse" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, parentid, sname, slocalid, idepth, sdesc, sremark, sfilepath, sfilename, isort, bclassified, picturepath, buse
+    </sql>
+
+</mapper>

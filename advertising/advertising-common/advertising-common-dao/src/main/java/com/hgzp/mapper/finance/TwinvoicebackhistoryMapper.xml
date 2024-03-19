@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.finance.TwinvoicebackhistoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twinvoicebackhistory">
+        <id column="id" property="id" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="orderapportiondetailid" property="orderapportiondetailid" />
+        <result column="customerchargeid" property="customerchargeid" />
+        <result column="invoiceid" property="invoiceid" />
+        <result column="invoice" property="invoice" />
+        <result column="namountapportion" property="namountapportion" />
+        <result column="orderid" property="orderid" />
+        <result column="orderitemid" property="orderitemid" />
+        <result column="orderitemcode" property="orderitemcode" />
+        <result column="scontractnum" property="scontractnum" />
+        <result column="dapportiondate" property="dapportiondate" />
+        <result column="sapportiontype" property="sapportiontype" />
+        <result column="sdescription" property="sdescription" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createempid, createempname, dcreatetime, orderapportiondetailid, customerchargeid, invoiceid, invoice, namountapportion, orderid, orderitemid, orderitemcode, scontractnum, dapportiondate, sapportiontype, sdescription
+    </sql>
+
+</mapper>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.ad.TwadprojectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twadproject">
+        <id column="id" property="id" />
+        <result column="projectcode" property="projectcode" />
+        <result column="createempid" property="createempid" />
+        <result column="screatename" property="screatename" />
+        <result column="dcreatedate" property="dcreatedate" />
+        <result column="sname" property="sname" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="deptid" property="deptid" />
+        <result column="deptname" property="deptname" />
+        <result column="nprojectcost" property="nprojectcost" />
+        <result column="bprojectcomplete" property="bprojectcomplete" />
+        <result column="businessentityid" property="businessentityid" />
+        <result column="businessentityname" property="businessentityname" />
+        <result column="bpayed" property="bpayed" />
+        <result column="icontracttype" property="icontracttype" />
+        <result column="isalecontracttype" property="isalecontracttype" />
+        <result column="scontractnum" property="scontractnum" />
+        <result column="newbelongid" property="newbelongid" />
+        <result column="newbelongname" property="newbelongname" />
+        <result column="scontractname" property="scontractname" />
+        <result column="istamptype" property="istamptype" />
+        <result column="bauthorizer" property="bauthorizer" />
+        <result column="authorizername" property="authorizername" />
+        <result column="nprojectbudget" property="nprojectbudget" />
+        <result column="invoiceamount" property="invoiceamount" />
+        <result column="payedamount" property="payedamount" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="denddate" property="denddate" />
+        <result column="myreource" property="myreource" />
+        <result column="myresourceworth" property="myresourceworth" />
+        <result column="sideresource" property="sideresource" />
+        <result column="sireresourceworth" property="sireresourceworth" />
+        <result column="equipresource" property="equipresource" />
+        <result column="giveresource" property="giveresource" />
+        <result column="sprojectcontent" property="sprojectcontent" />
+        <result column="applicationid" property="applicationid" />
+        <result column="iapprovestatus" property="iapprovestatus" />
+        <result column="sapprovalopinions" property="sapprovalopinions" />
+        <result column="isort" property="isort" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 广告项目汇总查询映射结果 -->
+    <resultMap id="AdProjectCountResultMap" type="com.hgzp.pagemodel.ad.AdProjectCountVO">
+        <id column="id" property="id" />
+        <result column="sname" property="sname" />
+        <result column="dcreatedate" property="dcreatedate" />
+        <result column="sremark" property="sremark" />
+        <result column="nprojectbudget" property="nprojectbudget" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="denddate" property="denddate" />
+        <result column="amountreceivable" property="amountreceivable" />
+        <result column="amountreceived" property="amountreceived" />
+        <result column="amountarrearage" property="amountarrearage" />
+        <result column="amountachievement" property="amountachievement" />
+        <result column="costamount" property="costamount" />
+        <result column="finshedlastyear" property="finshedlastyear" />
+        <result column="nofinshedlastyear" property="nofinshedlastyear" />
+        <result column="finshedthisyear" property="finshedthisyear" />
+        <result column="nofinshedthisyear" property="nofinshedthisyear" />
+        <result column="nofinshednextyear" property="nofinshednextyear" />
+        <result column="nprojectcost" property="nprojectcost" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, projectcode, createempid, screatename, dcreatedate, sname, employid, employname, deptid, deptname, nprojectcost, bprojectcomplete, businessentityid, businessentityname, bpayed, icontracttype, isalecontracttype, scontractnum, newbelongid, newbelongname, scontractname, istamptype, bauthorizer, authorizername, nprojectbudget, invoiceamount, payedamount, dstartdate, denddate, myreource, myresourceworth, sideresource, sireresourceworth, equipresource, giveresource, sprojectcontent, applicationid, iapprovestatus, sapprovalopinions, isort, sremark
+    </sql>
+
+    <select id="queryAdProjectCount" resultMap="AdProjectCountResultMap" parameterType="Map">
+        select ao.id,ao.sname,ao.dcreatedate,ao.sremark,ao.nprojectbudget,ao.dstartdate,ao.denddate,ao.nprojectcost,sum(ro.amountreceivable)amountreceivable,sum(ro.amountreceived)amountreceived,sum(ro.amountarrearage)amountarrearage,sum(ro.amountachievement)amountachievement
+        from twadproject as ao
+        LEFT JOIN tworder AS so ON ao.id = so.adprojectid
+        LEFT JOIN tworderitem AS ro ON ro.orderid = so.id
+        <if test="publishstatus !=null and publishstatus!='' ">
+            and (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+        </if>
+        <where>
+            <if test="null != ids and ids.size > 0">
+                and ao.id in
+                <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+         </where>
+        GROUP BY ao.id
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+
+    </select>
+
+</mapper>

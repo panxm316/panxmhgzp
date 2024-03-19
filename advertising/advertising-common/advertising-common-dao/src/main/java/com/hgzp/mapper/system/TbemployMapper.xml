@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TbemployMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbemploy">
+        <id column="id" property="id" />
+        <result column="deptid" property="deptid" />
+        <result column="sloginname" property="sloginname" />
+        <result column="spassword" property="spassword" />
+        <result column="semploytype" property="semploytype" />
+        <result column="simg" property="simg" />
+        <result column="sphone" property="sphone" />
+        <result column="susername" property="susername" />
+        <result column="sweixin" property="sweixin" />
+        <result column="parttimedeptid" property="parttimedeptid" />
+        <result column="snameparttimedept" property="snameparttimedept" />
+        <result column="binner" property="binner" />
+        <result column="sclientid" property="sclientid" />
+        <result column="badminflag" property="badminflag" />
+        <result column="bselfrole" property="bselfrole" />
+        <result column="dpasslastmodtime" property="dpasslastmodtime" />
+        <result column="sguidcas" property="sguidcas" />
+        <result column="bcaspush" property="bcaspush" />
+        <result column="isort" property="isort" />
+        <result column="buse" property="buse" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, deptid, sloginname, spassword, semploytype, simg, sphone, susername, sweixin, parttimedeptid, snameparttimedept, binner, sclientid, badminflag, bselfrole, dpasslastmodtime, sguidcas, bcaspush, isort, buse
+    </sql>
+    <update id="updateBuseByIds">
+        update tbemploy set buse = #{buse}
+        where id in
+        <foreach collection="idList" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+</mapper>

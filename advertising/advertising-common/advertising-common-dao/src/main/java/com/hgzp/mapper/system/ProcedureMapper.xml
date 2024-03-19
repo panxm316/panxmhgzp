@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.ProcedureMapper">
+
+
+    <select id="getSerNo" resultType="java.lang.String" parameterType="map" statementType="CALLABLE">
+        {call P_GEN_SERNO(#{serNo,mode=OUT,jdbcType=VARCHAR})}
+    </select>
+
+    <select id="getFpNo" resultType="java.lang.String" parameterType="map" statementType="CALLABLE">
+        {call P_GEN_FPNO(#{serNo,mode=OUT,jdbcType=VARCHAR})}
+    </select>
+
+    <select id="getXmNo" resultType="java.lang.String" parameterType="map" statementType="CALLABLE">
+        {call P_GEN_XMNO(#{serNo,mode=OUT,jdbcType=VARCHAR})}
+    </select>
+
+    <select id="getOrderNo" resultType="java.lang.String" parameterType="map" statementType="CALLABLE">
+        {call P_GEN_ORDERNO(#{serNo,mode=OUT,jdbcType=VARCHAR})}
+    </select>
+</mapper>

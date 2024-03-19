@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.flow.TwempholidaysMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twempholidays">
+        <id column="id" property="id" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="denddate" property="denddate" />
+        <result column="newemployid" property="newemployid" />
+        <result column="newemployname" property="newemployname" />
+        <result column="operatorid" property="operatorid" />
+        <result column="operatorname" property="operatorname" />
+        <result column="dcreatedate" property="dcreatedate" />
+        <result column="buse" property="buse" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, employid, employname, dstartdate, denddate, newemployid, newemployname, operatorid, operatorname, dcreatedate, buse, sremark
+    </sql>
+
+</mapper>

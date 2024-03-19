@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.finance.TworderapportiondetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tworderapportiondetail">
+        <id column="id" property="id" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="customerchargeid" property="customerchargeid" />
+        <result column="invoiceid" property="invoiceid" />
+        <result column="invoice" property="invoice" />
+        <result column="amountreceivable" property="amountreceivable" />
+        <result column="amountreceived" property="amountreceived" />
+        <result column="amountarrearage" property="amountarrearage" />
+        <result column="namountapportion" property="namountapportion" />
+        <result column="orderid" property="orderid" />
+        <result column="orderitemid" property="orderitemid" />
+        <result column="orderitemcode" property="orderitemcode" />
+        <result column="scontractnum" property="scontractnum" />
+        <result column="dapportiondate" property="dapportiondate" />
+        <result column="sapportiontype" property="sapportiontype" />
+        <result column="brollback" property="brollback" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 订单变动查询映射结果 -->
+    <resultMap id="AdChangeResultMap" type="com.hgzp.pagemodel.statistic.AdChangeVo">
+        <result column="createtime" property="createtime" />
+        <result column="scontractnum" property="scontractnum" />
+        <result column="agencyname" property="agencyname" />
+        <result column="customername" property="customername" />
+        <result column="prestartdate" property="prestartdate" />
+        <result column="amountreceivable" property="amountreceivable" />
+        <result column="employname" property="employname" />
+        <result column="foldname" property="foldname" />
+        <result column="businessentityname" property="businessentityname" />
+        <result column="changeAmountreceivable" property="changeAmountreceivable" />
+        <result column="changeprestartdate" property="changeprestartdate" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 广告明细订单应收金额汇总查询映射结果 -->
+    <resultMap id="AdSummaryAllResultMap" type="com.hgzp.pagemodel.ad.AdSummaryAllVO">
+        <result column="amountreceivable" property="amountreceivable" />
+        <result column="amountreceived" property="amountreceived" />
+        <result column="amountarrearage" property="amountarrearage" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createempid, createempname, dcreatetime, customerchargeid, invoiceid, invoice, amountreceivable, amountreceived, amountarrearage, namountapportion, orderid, orderitemid, orderitemcode, scontractnum, dapportiondate, sapportiontype, brollback, version
+    </sql>
+
+    <!-- 广告分摊汇总查询映射结果 -->
+    <resultMap id="AdSummaryResultMap" type="com.hgzp.pagemodel.ad.AdSummaryVO">
+        <result column="amountreceivable" property="amountreceivable" />
+    </resultMap>
+
+    <!-- 综合查询映射结果 -->
+    <resultMap id="SynResultMap" type="com.hgzp.pagemodel.statistic.SynQueryResultVO">
+        <result column="scontractnum" property="scontractnum" />
+        <result column="createtime" property="createtime" />
+        <result column="prestartdate" property="prestartdate" />
+        <result column="customername" property="customername" />
+        <result column="amountreceivable" property="amountreceivable" />
+        <result column="amountarrearage" property="amountarrearage" />
+        <result column="amountreceived" property="amountreceived" />
+        <result column="sadtitle" property="sadtitle" />
+        <result column="agencyname" property="agencyname" />
+        <result column="adtypename" property="adtypename" />
+        <result column="adindustryname" property="adindustryname" />
+        <result column="deptname" property="deptname" />
+        <result column="employname" property="employname" />
+        <result column="invoice" property="invoice" />
+        <result column="namount" property="namount" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="dapportiondate" property="dapportiondate" />
+        <result column="namountapportion" property="namountapportion" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+
+    <select id="summaryNamountapportion" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(ro.namountapportion),2)amountreceivable from tworderapportiondetail as ro
+        INNER JOIN tworder as two on two.id = ro.orderid
+        <if test="departmentId !=null and departmentId!='' ">
+            and two.deptid=#{departmentId,jdbcType=VARCHAR}
+        </if>
+        <if test="companyId !=null and companyId!='' ">
+            and two.businessentityid=#{companyId,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime !=null and startTime!='' ">
+            where ro.dcreatetime BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="summaryNamountapportionArray" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(ro.namountapportion),2)amountreceivable from tworderapportiondetail as ro
+        INNER JOIN tworder as two on two.id = ro.orderid
+        <if test="null != ids and ids.size > 0">
+            and two.deptid in
+            <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="companyId !=null and companyId!='' ">
+            and two.businessentityid=#{companyId,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime !=null and startTime!='' ">
+            where ro.dcreatetime BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="summaryNamountapportionMedia" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(ro.namountapportion),2)amountreceivable from tworderapportiondetail as ro
+        INNER JOIN tworder as two on two.id = ro.orderid
+        <if test="null != ids and ids.size > 0">
+            and two.deptid in
+            <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="companyId !=null and companyId!='' ">
+            and two.businessentityid=#{companyId,jdbcType=VARCHAR}
+        </if>
+        INNER JOIN tworderitem as orderitem on orderitem.id = ro.orderitemid and orderitem.bdelete = 0
+        where 1=1
+        <if test="startTime !=null and startTime!='' ">
+            and ro.dcreatetime BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+        <if test="null != meidaids and meidaids.size > 0">
+            and orderitem.mediaid in
+            <foreach item="item" index="index" collection="meidaids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="null != floadids and floadids.size > 0">
+            and orderitem.foldid in
+            <foreach item="item" index="index" collection="floadids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="null != foldareaverids and foldareaverids.size > 0">
+            and orderitem.foldareaverid in
+            <foreach item="item" index="index" collection="foldareaverids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="summaryReceivable" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(ro.amountreceivable),2)amountreceivable from tworderitem as ro
+        INNER JOIN tworder as two on two.id = ro.orderid
+        <if test="null != depids and depids.size > 0">
+            and two.deptid in
+            <foreach item="item" index="index" collection="depids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="companyId !=null and companyId!='' ">
+            and two.businessentityid=#{companyId,jdbcType=VARCHAR}
+        </if>
+        where (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+        and ro.bdelete = 0
+        <if test="startTime !=null and startTime!='' ">
+            and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+        <if test="null != meidaids and meidaids.size > 0">
+            and ro.mediaid in
+            <foreach item="item" index="index" collection="meidaids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="null != floadids and floadids.size > 0">
+            and ro.foldid in
+            <foreach item="item" index="index" collection="floadids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="null != foldareaverids and foldareaverids.size > 0">
+            and ro.foldareaverid in
+            <foreach item="item" index="index" collection="foldareaverids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="summaryIndustyReceivable" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(ro.amountreceivable),2)amountreceivable from tworderitem as ro
+        INNER JOIN tworder as two on two.id = ro.orderid
+        <if test="industyId !=null and industyId!='' ">
+            and two.adindustyid=#{industyId,jdbcType=VARCHAR}
+        </if>
+        where (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+        and ro.bdelete = 0
+        <if test="startTime !=null and startTime!='' ">
+            and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+        <if test="mediaId !=null and mediaId!='' ">
+            and ro.mediaid = #{mediaId,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="queryChangeOredrItem" resultMap="AdChangeResultMap" parameterType="Map">
+        select ro.ibooktype,ro.createtime,so.scontractnum,so.agencyname,so.customername,ro.prestartdate,ro.amountreceivable,so.employname,ro.foldname,so.businessentityname,ro.sremark
+        from  tworderitem as ro
+        INNER JOIN tworder AS so ON ro.orderid = so.id
+        where ro.ibooktype = 3
+        and ro.bdelete = 0
+        and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        order by prestartdate DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="getChangeOredrItemCount" resultType="java.lang.Long" parameterType="Map">
+        select count(*)
+        from  tworderitem as ro
+                  INNER JOIN tworder AS so ON ro.orderid = so.id
+        where ro.ibooktype = 3
+          and ro.bdelete = 0
+          and ro.prestartdate BETWEEN #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+    </select>
+
+    <select id="querySyn" resultMap="SynResultMap" parameterType="Map">
+        select
+        <if test="repeat !=null and repeat=='1'.toString() ">
+            distinct
+        </if>
+        ro.id,
+        <if test="fields != null">
+            <foreach item="item" index="index" collection="fields">
+                <if test="item.enName =='amountreceivable'.toString()">
+                    ro.amountreceivable,
+                </if>
+                <if test="item.enName =='amountarrearage'.toString()">
+                    ro.amountarrearage,
+                </if>
+                <if test="item.enName =='scontractnum'.toString()">
+                    so.scontractnum,
+                </if>
+                <if test="item.enName =='createtime'.toString()">
+                    ro.createtime,
+                </if>
+                <if test="item.enName =='prestartdate'.toString()">
+                    ro.prestartdate,
+                </if>
+                <if test="item.enName =='customername'.toString()">
+                    so.customername,
+                </if>
+                <if test="item.enName =='amountreceived'.toString()">
+                    ro.amountreceived,
+                </if>
+                <if test="item.enName =='sadtitle'.toString()">
+                    ro.sadtitle,
+                </if>
+                <if test="item.enName =='agencyname'.toString()">
+                    so.agencyname,
+                </if>
+                <if test="item.enName =='adtypename'.toString()">
+                    so.adtypename,
+                </if>
+                <if test="item.enName =='adindustryname'.toString()">
+                    so.adindustryname,
+                </if>
+                <if test="item.enName =='deptname'.toString()">
+                    so.deptname,
+                </if>
+                <if test="item.enName =='employname'.toString()">
+                    so.employname,
+                </if>
+                <if test="item.enName =='invoice'.toString()">
+                    vo.invoice,
+                </if>
+                <if test="item.enName =='namount'.toString()">
+                    vo.namount,
+                </if>
+                <if test="item.enName =='dcreatetime'.toString()">
+                    vo.dcreatetime,
+                </if>
+                <if test="item.enName =='dapportiondate'.toString()">
+                    bo.dapportiondate,
+                </if>
+                <if test="item.enName =='namountapportion'.toString()">
+                    bo.namountapportion,
+                </if>
+                <if test="item.enName =='sremark'.toString()">
+                    so.sremark,
+                </if>
+            </foreach>
+            ro.orderid
+        </if>
+        from  tworderitem as ro
+        INNER JOIN tworder AS so ON ro.orderid = so.id
+        LEFT JOIN tworderapportiondetail AS bo ON ro.id = bo.orderitemid
+        LEFT JOIN twinvoice AS vo ON bo.invoiceid = vo.id
+        where ro.bdelete = 0
+        <choose>
+            <when test="range == '1'.toString()">
+                and  (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+            </when>
+            <when test="range == '2'.toString()">
+                and  ro.amountreceived > 0
+            </when>
+            <when test="range == '3'.toString()">
+                and  ro.amountreceived > 0 and (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+            </when>
+        </choose>
+        <if test="fields != null">
+            <foreach item="item" index="index" collection="fields">
+                    <if test="item.conditionOp !=null and item.conditionOp=='等于'.toString() ">
+                        and ${item.enPreName} = #{item.value}
+                    </if>
+                    <if test="item.conditionOp !=null and item.conditionOp=='不等于'.toString() ">
+                        and ${item.enPreName} != #{item.value}
+                    </if>
+                    <if test="item.conditionOp !=null and item.conditionOp=='大于'.toString() ">
+                        and ${item.enPreName} > #{item.value}
+                    </if>
+                    <if test="item.conditionOp !=null and item.conditionOp=='大于等于'.toString() ">
+                        and ${item.enPreName} >= #{item.value}
+                    </if>
+                    <if test="item.conditionOp !=null and item.conditionOp=='小于'.toString() ">
+                        and ${item.enPreName}  &lt; #{item.value}
+                    </if>
+                    <if test="item.conditionOp !=null and item.conditionOp=='小于等于'.toString() ">
+                        and ${item.enPreName}  &lt;= #{item.value}
+                    </if>
+                    <if test="item.conditionOp !=null and item.conditionOp=='介于'.toString() ">
+                        and ${item.enPreName} between #{item.value} and #{item.othervalue}
+                    </if>
+                    <if test="item.conditionOp !=null and item.conditionOp=='包含'.toString() ">
+                        and ${item.enPreName} LIKE CONCAT('%',#{item.value},'%')
+                    </if>
+            </foreach>
+        </if>
+        <if test="sortname !=null and sortname!=''">
+            <choose>
+                <when test="sorttype == '1'.toString()">
+                    order by ${sortname} DESC
+                </when>
+                <when test="sorttype == '0'.toString()">
+                    order by ${sortname}
+                </when>
+            </choose>
+        </if>
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="getQuerySynCount" resultType="java.lang.Long" parameterType="Map">
+        select count(*)
+        from  tworderitem as ro
+        INNER JOIN tworder AS so ON ro.orderid = so.id
+        LEFT JOIN tworderapportiondetail AS bo ON ro.id = bo.orderitemid
+        LEFT JOIN twinvoice AS vo ON bo.invoiceid = vo.id
+        where ro.bdelete = 0
+        <choose>
+            <when test="range == '1'.toString()">
+                and  (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+            </when>
+            <when test="range == '2'.toString()">
+                and  ro.amountreceived > 0
+            </when>
+            <when test="range == '3'.toString()">
+                and  ro.amountreceived > 0 and (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+            </when>
+        </choose>
+        <if test="fields != null">
+            <foreach item="item" index="index" collection="fields">
+                <if test="item.conditionOp !=null and item.conditionOp=='等于'.toString() ">
+                    and ${item.enPreName} = #{item.value}
+                </if>
+                <if test="item.conditionOp !=null and item.conditionOp=='不等于'.toString() ">
+                    and ${item.enPreName} != #{item.value}
+                </if>
+                <if test="item.conditionOp !=null and item.conditionOp=='大于'.toString() ">
+                    and ${item.enPreName} > #{item.value}
+                </if>
+                <if test="item.conditionOp !=null and item.conditionOp=='大于等于'.toString() ">
+                    and ${item.enPreName} >= #{item.value}
+                </if>
+                <if test="item.conditionOp !=null and item.conditionOp=='小于'.toString() ">
+                    and ${item.enPreName}  &lt; #{item.value}
+                </if>
+                <if test="item.conditionOp !=null and item.conditionOp=='小于等于'.toString() ">
+                    and ${item.enPreName}  &lt;= #{item.value}
+                </if>
+                <if test="item.conditionOp !=null and item.conditionOp=='介于'.toString() ">
+                    and ${item.enPreName} between #{item.value} and #{item.othervalue}
+                </if>
+                <if test="item.conditionOp !=null and item.conditionOp=='包含'.toString() ">
+                    and ${item.enPreName} LIKE CONCAT('%',#{item.value},'%')
+                </if>
+
+            </foreach>
+        </if>
+    </select>
+
+    <select id="getAdSummaryAll" resultMap="AdSummaryAllResultMap" parameterType="Map">
+        select ROUND(sum(amountreceivable),2)amountreceivable,ROUND(sum(amountreceived),2)amountreceived,ROUND(sum(amountarrearage),2)amountarrearage from tworderitem
+        where  orderid = #{orderId,jdbcType=VARCHAR}
+    </select>
+</mapper>

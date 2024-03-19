@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.business.TwtasksMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twtasks">
+        <id column="id" property="id" />
+        <result column="operatorid" property="operatorid" />
+        <result column="operatorname" property="operatorname" />
+        <result column="stasktype" property="stasktype" />
+        <result column="spersonaltype" property="spersonaltype" />
+        <result column="deptid" property="deptid" />
+        <result column="deptname" property="deptname" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="mediaid" property="mediaid" />
+        <result column="medianame" property="medianame" />
+        <result column="staskdate" property="staskdate" />
+        <result column="ntaskamount" property="ntaskamount" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="buse" property="buse" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, operatorid, operatorname, stasktype, spersonaltype, deptid, deptname, employid, employname, mediaid, medianame, staskdate, ntaskamount, dcreatetime, buse, sremark
+    </sql>
+
+    <!-- 部门任务汇总查询结果 -->
+    <resultMap id="AdSummaryResultMap" type="com.hgzp.pagemodel.ad.AdSummaryVO">
+        <result column="amountreceivable" property="amountreceivable" />
+    </resultMap>
+
+    <select id="summaryDeptTask" resultMap="AdSummaryResultMap" parameterType="Map">
+        select ROUND(sum(ro.ntaskamount),2)amountreceivable from twtasks as ro
+        where ro.staskdate=#{taskdate,jdbcType=VARCHAR}
+        and spersonaltype=0
+        <choose>
+            <when test="sumtype!=null">
+                and mediaid is not NULL
+            </when>
+            <otherwise>
+                and mediaid is NULL
+            </otherwise>
+        </choose>
+
+        <if test="null != deptids and deptids.size > 0">
+            and ro.deptid in
+            <foreach item="item" index="index" collection="deptids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="null != mediaids and mediaids.size > 0">
+            and ro.mediaid in
+            <foreach item="item" index="index" collection="mediaids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+
+</mapper>

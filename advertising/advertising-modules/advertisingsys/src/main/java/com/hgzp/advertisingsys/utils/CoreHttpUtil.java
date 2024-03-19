@@ -1,0 +1,239 @@
+package com.hgzp.advertisingsys.utils;
+
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.extra.spring.SpringUtil;
+import cn.hutool.http.HttpRequest;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.TypeReference;
+import com.hgzp.common.flowable.dto.*;
+import com.hgzp.common.flowable.dto.flow.Node;
+import com.hgzp.common.flowable.utils.CommonUtil;
+import org.springframework.core.env.Environment;
+
+import java.util.List;
+
+public class CoreHttpUtil {
+
+    public static String getBaseUrl() {
+        Environment environment = SpringUtil.getBean(Environment.class);
+        String bizUrl = environment.getProperty("core.url");
+        return bizUrl;
+    }
+
+
+    public static String post(Object object, String url) {
+
+        String bizUrl =getBaseUrl();
+
+
+        String post = HttpRequest.post(StrUtil.format("{}{}", bizUrl, url))
+                .body(JSON.toJSONString(object))
+                .execute().body();
+
+
+        return post;
+    }
+
+    public static String get(String url) {
+
+        String bizUrl = getBaseUrl();
+
+        return HttpRequest.get(StrUtil.format("{}{}", bizUrl, url)).execute().body();
+
+
+    }
+    /**
+     * 查询任务变量
+     * 全部都是
+     *
+     * @param taskId
+     * @param keyList
+     * @return
+     */
+    public static String queryTaskVariables(String taskId, List<String> keyList) {
+        VariableQueryParamDto variableQueryParamDto = new VariableQueryParamDto();
+        variableQueryParamDto.setKeyList(keyList);
+        variableQueryParamDto.setTaskId(taskId);
+
+        return post(variableQueryParamDto, "/task/queryTaskVariables");
+
+    }
+
+    /**
+     * 查询流程变量
+     * 全部都是
+     *
+     * @return
+     */
+    public static R<IndexPageStatistics> querySimpleData(String userId) {
+
+        String s =get("/process-instance/querySimpleData?userId=" + userId );
+        return JSON.parseObject(s, new TypeReference<R<IndexPageStatistics>>() {
+        });
+
+    }
+
+    /**
+     * 创建流程
+     *
+     * @param node
+     * @return
+     */
+    public static R<String> createFlow(Node node, String userId) {
+
+        String post = post(node, "/flow/create?userId=" + userId);
+        R<String> r = JSON.parseObject(post, R.class);
+        return r;
+
+    }
+
+    /**
+     * 启动流程
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static String startProcess(ProcessInstanceParamDto jsonObject) {
+
+        return post(jsonObject, "/flow/start");
+
+    }
+
+
+    /**
+     * 查询指派任务
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static R<PageResultDto<TaskDto>> queryAssignTask(TaskQueryParamDto jsonObject) {
+
+        String post = post(jsonObject, "/flow/queryAssignTask");
+
+        R<PageResultDto<TaskDto>> r = JSON.parseObject(post, new TypeReference<R<PageResultDto<TaskDto>>>() {
+        });
+        return r;
+
+    }
+
+    /**
+     * 查询已办任务
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static  R<PageResultDto<TaskDto>> queryCompletedTask(TaskQueryParamDto jsonObject) {
+
+        String post = post(jsonObject, "/flow/queryCompletedTask");
+        R<PageResultDto<TaskDto>> r = JSON.parseObject(post, new TypeReference<R<PageResultDto<TaskDto>>>() {
+        });
+        return r;
+
+    }
+
+    /**
+     * 完成任务
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static R completeTask(TaskParamDto jsonObject) {
+
+        String post = post(jsonObject, "/task/complete");
+        return CommonUtil.toObj(post,R.class);
+
+    }
+
+    /**
+     * 转交
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static String setAssignee(TaskParamDto jsonObject) {
+
+        return post(jsonObject, "/task/setAssignee");
+
+    }
+
+    /**
+     * 终止流程
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static  R stopProcessInstance(TaskParamDto jsonObject) {
+
+        String post = post(jsonObject, "/flow/stopProcessInstance");
+        R r = JSON.parseObject(post, new TypeReference<R>() {
+        });
+        return r;
+
+    }
+
+    /**
+     * 解决委派任务
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static String resolveTask(TaskParamDto jsonObject) {
+
+        return post(jsonObject, "/task/resolveTask");
+
+    }
+
+    /**
+     * 退回
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static String back(TaskParamDto jsonObject) {
+
+        return post(jsonObject, "/task/back");
+
+    }
+
+    /**
+     * 委派任务
+     *
+     * @param jsonObject
+     * @return
+     */
+    public static String delegateTask(TaskParamDto jsonObject) {
+
+        return post(jsonObject, "/task/delegateTask");
+
+    }
+
+    /**
+     * 显示图片
+     *
+     * @param procInsId
+     * @return
+     */
+    public static String showImg(String procInsId) {
+
+        return get("/flow/showImg?procInsId=" + procInsId);
+
+    }
+
+    /**
+     * 查询任务
+     *
+     * @param taskId
+     * @param userId
+     * @return
+     */
+    public static  R<TaskResultDto> queryTask(String taskId, String userId) {
+
+        String s = get(StrUtil.format("/task/queryTask?taskId={}&userId={}", taskId, userId));
+        R<TaskResultDto> r = JSON.parseObject(s, new TypeReference<R<TaskResultDto>>() {
+        });
+        return r;
+
+    }
+
+
+}

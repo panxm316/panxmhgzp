@@ -1,0 +1,40 @@
+package com.hgzp.advertising.service.system;
+
+import com.hgzp.core.model.Tbmenu;
+import com.hgzp.core.page.TreeModel;
+import com.hgzp.service.system.BaseTbrolemenuServiceI;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * <p>
+ * 角色菜单表 服务类
+ * </p>
+ *
+ * @author wwk
+ * @since 2023-08-15
+ */
+public interface TbrolemenuServiceI extends BaseTbrolemenuServiceI {
+
+
+    /**
+     * getMenuListGroupByRoldId
+     * 方法功能: 根据角色id 分组 查询角色对应的菜单
+     * @author wangwk
+     * @date 2023/8/24 13:48
+     * @param roleIdList
+     * @return java.util.Map<java.lang.Long,java.util.List<com.hgzp.core.model.Tbmenu>>
+     */
+    Map<Long, List<Tbmenu>> getMenuListGroupByRoldId(List<Long> roleIdList);
+
+    /**
+     * 获取人员角色菜单树
+     * 方法功能:
+     * @author songly
+     * @date 2024/1/24 9:41
+     * @param
+     * @return java.util.List<com.hgzp.core.page.TreeModel>
+     */
+    List<TreeModel> getRoleMenuTree() throws Exception;
+}

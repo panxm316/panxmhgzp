@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.media.TbpagesizeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbpagesize">
+        <id column="id" property="id" />
+        <result column="sname" property="sname" />
+        <result column="ipagewidth" property="ipagewidth" />
+        <result column="ipageheight" property="ipageheight" />
+        <result column="isinglescale" property="isinglescale" />
+        <result column="iscale" property="iscale" />
+        <result column="smoveflag" property="smoveflag" />
+        <result column="icolwidth" property="icolwidth" />
+        <result column="nfontsize" property="nfontsize" />
+        <result column="isort" property="isort" />
+        <result column="buse" property="buse" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, sname, ipagewidth, ipageheight, isinglescale, iscale, smoveflag, icolwidth, nfontsize, isort, buse
+    </sql>
+
+</mapper>

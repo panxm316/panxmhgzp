@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.ad.TwspecialprojectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twspecialproject">
+        <id column="id" property="id" />
+        <result column="createempid" property="createempid" />
+        <result column="screatename" property="screatename" />
+        <result column="dcreatedate" property="dcreatedate" />
+        <result column="sname" property="sname" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="denddate" property="denddate" />
+        <result column="sprojectcontent" property="sprojectcontent" />
+        <result column="bprojectcomplete" property="bprojectcomplete" />
+        <result column="isort" property="isort" />
+    </resultMap>
+
+    <!-- 广告项目汇总查询映射结果 -->
+    <resultMap id="AdProjectCountResultMap" type="com.hgzp.pagemodel.ad.AdProjectCountVO">
+        <id column="id" property="id" />
+        <result column="sname" property="sname" />
+        <result column="dcreatedate" property="dcreatedate" />
+        <result column="sremark" property="sremark" />
+        <result column="nprojectbudget" property="nprojectbudget" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="denddate" property="denddate" />
+        <result column="amountreceivable" property="amountreceivable" />
+        <result column="amountreceived" property="amountreceived" />
+        <result column="amountarrearage" property="amountarrearage" />
+        <result column="amountachievement" property="amountachievement" />
+        <result column="costamount" property="costamount" />
+        <result column="finshedlastyear" property="finshedlastyear" />
+        <result column="nofinshedlastyear" property="nofinshedlastyear" />
+        <result column="finshedthisyear" property="finshedthisyear" />
+        <result column="nofinshedthisyear" property="nofinshedthisyear" />
+        <result column="nofinshednextyear" property="nofinshednextyear" />
+        <result column="nprojectcost" property="nprojectcost" />
+    </resultMap>
+
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, createempid, screatename, dcreatedate, sname, dstartdate, denddate, sprojectcontent, bprojectcomplete, isort
+    </sql>
+
+    <select id="querySpecialProjectCount" resultMap="AdProjectCountResultMap" parameterType="Map">
+        select ao.sprojectcontent as sremark,ao.id,ao.sname,ao.dcreatedate,ao.dstartdate,ao.denddate,sum(ro.amountreceivable)amountreceivable,sum(ro.amountreceived)amountreceived,sum(ro.amountarrearage)amountarrearage,sum(ro.amountachievement)amountachievement
+        from twspecialproject as ao
+        LEFT JOIN tworder AS so ON ao.id = so.specialprojectid
+        LEFT JOIN tworderitem AS ro ON ro.orderid = so.id
+        <if test="publishstatus !=null and publishstatus!='' ">
+            and (ro.ipublishstatus = 4 or ro.ipublishstatus = 5)
+        </if>
+        <where>
+            <if test="null != ids and ids.size > 0">
+                and ao.id in
+                <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        GROUP BY ao.id
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+
+    </select>
+</mapper>

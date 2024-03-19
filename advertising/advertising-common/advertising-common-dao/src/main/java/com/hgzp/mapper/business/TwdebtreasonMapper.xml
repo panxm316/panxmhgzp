@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.business.TwdebtreasonMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twdebtreason">
+        <id column="id" property="id" />
+        <result column="deptid" property="deptid" />
+        <result column="deptname" property="deptname" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="agencyemployid" property="agencyemployid" />
+        <result column="agencyemployname" property="agencyemployname" />
+        <result column="agentemployid" property="agentemployid" />
+        <result column="agentemployname" property="agentemployname" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="createdate" property="createdate" />
+        <result column="customername" property="customername" />
+        <result column="agencyname" property="agencyname" />
+        <result column="agentname" property="agentname" />
+        <result column="orderid" property="orderid" />
+        <result column="orderitemid" property="orderitemid" />
+        <result column="scontractnum" property="scontractnum" />
+        <result column="dpublishdate" property="dpublishdate" />
+        <result column="sadtitle" property="sadtitle" />
+        <result column="amountreceivable" property="amountreceivable" />
+        <result column="amountreceived" property="amountreceived" />
+        <result column="amountarrearage" property="amountarrearage" />
+        <result column="namountinvoice" property="namountinvoice" />
+        <result column="invoice" property="invoice" />
+        <result column="snoticecontent" property="snoticecontent" />
+        <result column="sdebtreason" property="sdebtreason" />
+        <result column="scategory" property="scategory" />
+        <result column="srepaymentdate" property="srepaymentdate" />
+        <result column="srisklevel" property="srisklevel" />
+        <result column="blegal" property="blegal" />
+        <result column="dreportdate" property="dreportdate" />
+        <result column="bconfirm" property="bconfirm" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, deptid, deptname, employid, employname, agencyemployid, agencyemployname, agentemployid, agentemployname, createempid, createempname, createdate, customername, agencyname, agentname, orderid, orderitemid, scontractnum, dpublishdate, sadtitle, amountreceivable, amountreceived, amountarrearage, namountinvoice, invoice, snoticecontent, sdebtreason, scategory, srepaymentdate, srisklevel, blegal, dreportdate, bconfirm, version
+    </sql>
+
+</mapper>

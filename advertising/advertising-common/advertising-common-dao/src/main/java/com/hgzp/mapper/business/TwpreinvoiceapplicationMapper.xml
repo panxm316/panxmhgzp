@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.business.TwpreinvoiceapplicationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twpreinvoiceapplication">
+        <id column="id" property="id" />
+        <result column="deptid" property="deptid" />
+        <result column="deptname" property="deptname" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="customerid" property="customerid" />
+        <result column="customername" property="customername" />
+        <result column="icusttype" property="icusttype" />
+        <result column="dapplytime" property="dapplytime" />
+        <result column="namountapply" property="namountapply" />
+        <result column="printitemid" property="printitemid" />
+        <result column="printitemname" property="printitemname" />
+        <result column="namountreceived" property="namountreceived" />
+        <result column="iapplytype" property="iapplytype" />
+        <result column="iinvoicetype" property="iinvoicetype" />
+        <result column="invoiceid" property="invoiceid" />
+        <result column="invoice" property="invoice" />
+        <result column="invoicecode" property="invoicecode" />
+        <result column="sprintname" property="sprintname" />
+        <result column="spayercreditcode" property="spayercreditcode" />
+        <result column="spayeraddr" property="spayeraddr" />
+        <result column="spayerbank" property="spayerbank" />
+        <result column="businessentityid" property="businessentityid" />
+        <result column="businessentityname" property="businessentityname" />
+        <result column="applicationid" property="applicationid" />
+        <result column="iapprovestatus" property="iapprovestatus" />
+        <result column="sapprovalopinions" property="sapprovalopinions" />
+        <result column="operatorid" property="operatorid" />
+        <result column="operator" property="operator" />
+        <result column="sremark" property="sremark" />
+        <result column="adprojectid" property="adprojectid" />
+        <result column="adprojectname" property="adprojectname" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, deptid, deptname, employid, employname, customerid, customername, icusttype, dapplytime, namountapply, printitemid, printitemname, namountreceived, iapplytype, iinvoicetype, invoiceid, invoice, invoicecode, sprintname, spayercreditcode, spayeraddr, spayerbank, businessentityid, businessentityname, applicationid, iapprovestatus, sapprovalopinions, operatorid, operator, sremark,  adprojectid, adprojectname, version
+    </sql>
+
+</mapper>

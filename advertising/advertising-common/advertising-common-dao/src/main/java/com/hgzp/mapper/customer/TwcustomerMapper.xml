@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.customer.TwcustomerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twcustomer">
+        <id column="id" property="id" />
+        <result column="sname" property="sname" />
+        <result column="sbrevitycode" property="sbrevitycode" />
+        <result column="icode" property="icode" />
+        <result column="itype" property="itype" />
+        <result column="saddress" property="saddress" />
+        <result column="sphone" property="sphone" />
+        <result column="screditcode" property="screditcode" />
+        <result column="sbankaccount" property="sbankaccount" />
+        <result column="scontacts" property="scontacts" />
+        <result column="smobilephone" property="smobilephone" />
+        <result column="spostcode" property="spostcode" />
+        <result column="adindustryid" property="adindustryid" />
+        <result column="adindustryname" property="adindustryname" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="parentid" property="parentid" />
+        <result column="bvip" property="bvip" />
+        <result column="sstatus" property="sstatus" />
+        <result column="iapprovestatus" property="iapprovestatus" />
+        <result column="sapprovalopinions" property="sapprovalopinions" />
+        <result column="bdelete" property="bdelete" />
+        <result column="buse" property="buse" />
+        <result column="bindividual" property="bindividual" />
+        <result column="sbrand" property="sbrand" />
+        <result column="customercategoryid" property="customercategoryid" />
+        <result column="customercategoryname" property="customercategoryname" />
+        <result column="customerstatusid" property="customerstatusid" />
+        <result column="customerstatusname" property="customerstatusname" />
+        <result column="customercreditid" property="customercreditid" />
+        <result column="customercreditname" property="customercreditname" />
+        <result column="isort" property="isort" />
+        <result column="sremark" property="sremark" />
+        <result column="dcreatetime" property="dcreatetime" />
+        <result column="lastoperatorid" property="lastoperatorid" />
+        <result column="lastoperator" property="lastoperator" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, sname, sbrevitycode, icode, itype, saddress, sphone, screditcode, sbankaccount, scontacts, smobilephone, spostcode, adindustryid, adindustryname, employid, employname, parentid, bvip, sstatus, iapprovestatus, sapprovalopinions, bdelete, buse, bindividual, sbrand, customercategoryid, customercategoryname, customerstatusid, customerstatusname, customercreditid, customercreditname, isort, sremark, dcreatetime, lastoperatorid, lastoperator, version
+    </sql>
+
+    <select id="selectListByBelongid" parameterType="Map" resultMap="BaseResultMap">
+        SELECT c.* FROM twcustomer as c
+                 inner join twcustomerbelong as b on c.id = b.customerid
+        WHERE b.employid = #{employid}
+        <if test="endTime != null ">
+            and c.dcreatetime &lt; #{endTime}
+        </if>
+        <if test="startTime != null ">
+            and c.dcreatetime >= #{startTime}
+        </if>
+        order by c.dcreatetime DESC
+        limit #{pageNum,jdbcType=INTEGER},#{pageSize, jdbcType=INTEGER}
+    </select>
+
+    <select id="getListCountByBelongid" parameterType="Map" resultType="java.lang.Long">
+        SELECT COUNT(c.id) FROM twcustomer as c
+                 inner join twcustomerbelong as b on c.id = b.customerid
+        WHERE b.employid = #{employid}
+        <if test="endTime != null ">
+            and c.dcreatetime &lt; #{endTime}
+        </if>
+        <if test="startTime != null ">
+            and c.dcreatetime >= #{startTime}
+        </if>
+    </select>
+
+    <select id="getCustomerList" resultMap="BaseResultMap" parameterType="Map">
+        select *
+        from twcustomer
+        where buse = 1
+        and bdelete = 0
+        and dcreatetime BETWEEN #{thisStartTime,jdbcType=VARCHAR} and #{thisEndTime,jdbcType=VARCHAR}
+        <if test="null != ids and ids.size > 0">
+            and adfromid in
+            <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+
+    </select>
+</mapper>

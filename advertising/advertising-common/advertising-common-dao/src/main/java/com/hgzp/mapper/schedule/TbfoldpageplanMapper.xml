@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.schedule.TbfoldpageplanMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbfoldpageplan">
+        <id column="id" property="id" />
+        <result column="mediatypekey" property="mediatypekey" />
+        <result column="mediatypename" property="mediatypename" />
+        <result column="mediaid" property="mediaid" />
+        <result column="medianame" property="medianame" />
+        <result column="foldid" property="foldid" />
+        <result column="foldname" property="foldname" />
+        <result column="foldareaverid" property="foldareaverid" />
+        <result column="foldareavername" property="foldareavername" />
+        <result column="publishdate" property="publishdate" />
+        <result column="publishnum" property="publishnum" />
+        <result column="pagenum" property="pagenum" />
+        <result column="pagetitle" property="pagetitle" />
+        <result column="pagesizeid" property="pagesizeid" />
+        <result column="pagesizename" property="pagesizename" />
+        <result column="ipagewidth" property="ipagewidth" />
+        <result column="ipageheight" property="ipageheight" />
+        <result column="adcolorid" property="adcolorid" />
+        <result column="adcolorname" property="adcolorname" />
+        <result column="adflag" property="adflag" />
+        <result column="stoptime" property="stoptime" />
+        <result column="stopflag" property="stopflag" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, mediatypekey, mediatypename, mediaid, medianame, foldid, foldname, foldareaverid, foldareavername, publishdate, publishnum, pagenum, pagetitle, pagesizeid, pagesizename, ipagewidth, ipageheight, adcolorid, adcolorname, adflag, stoptime, stopflag, sremark
+    </sql>
+
+</mapper>

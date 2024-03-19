@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.business.TworderitemcostMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tworderitemcost">
+        <id column="id" property="id" />
+        <result column="orderitemid" property="orderitemid" />
+        <result column="createempid" property="createempid" />
+        <result column="createempname" property="createempname" />
+        <result column="dcreatedate" property="dcreatedate" />
+        <result column="namountcost" property="namountcost" />
+        <result column="sdescription" property="sdescription" />
+        <result column="istatus" property="istatus" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, orderitemid, createempid, createempname, dcreatedate, namountcost, sdescription, istatus
+    </sql>
+
+</mapper>

@@ -1,0 +1,184 @@
+server:
+  port: 8111
+  servlet:
+    context-path: /advertising
+  tomcat:
+    remoteip:
+      protocol-header: "X-Forwarded-Proto"
+      remote-ip-header: "X-FORWARDED-FOR"
+
+mybatis-plus:
+  type-aliases-package: com.hgzp.core.model
+  log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+spring:
+  main:
+    allow-circular-references: true
+  cloud:
+    config:
+      override-none: true
+      allow-override: true
+      override-system-properties: false
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+  redis:
+    host: 192.168.50.147
+    port: 6379
+    password: '!Hgzp12345678'
+    timeout: 100000
+    # muyn 231207 增加了 database:5 配置荐，将业务系统的redis加与管理系统分开
+    database: 5
+  rabbitmq:
+    host: 192.168.50.160
+    port: 5672
+    username: admin
+    password: ENC(f1lJWqIpvq8OPVDdPshU0dstRkW0vEMuzJ0b7mrBchcbYmzFZy5fL4fp24lO7hT6)
+    virtual-host: vufhost
+    exchange: ufile.yxt1
+    queue: cpsn.adcloud
+
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.50.113:3306/hgcyaddb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: yuqing
+      password: LdyJFKOnC8TEGTRtepANCpxh2NxX5mdOTOEeOq1s4dLReJqO7zCMdfIwf42mE+nCXiJHnxua6uioLoLtg2bEpg==
+      #配置初始化大小/最小/最大
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      #获取连接等待超时时间
+      max-wait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      #一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,config
+      stat-view-servlet:
+        enabled: true
+        url-pattern: "/druid/*"
+        #  禁用HTML页面上的“Reset All”功能
+        reset-enable: false
+        # 登录名
+        login-username: admin
+        # 登录密码
+        login-password: ENC(7+z7NSC7T8Y+FgrPZRmq3A70Vj9Tlv4ZcqKHqqZf8ljsZDig+dTt/wyieTQijKX9)
+      connect-properties:
+        config.decrypt: true
+        #        config.decrypt.key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJdDBwtyO7GM9fxIgcEoIT9jI7I6eNmTQ0lkA2eGYFAaj8x9T5+GWvrXQ7rkpYhKTY4MXmTRhw/R9XXdWYxmaOUCAwEAAQ==
+        config.decrypt.key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIO7LKFXz6OYovv1zrxqKx7wJ2wBDJGBOYvbmYEcNrVy12q82Pxz6ZmexmoSpeR00JHbdVDcNSC1KFWYcnGz3EcCAwEAAQ==
+
+#  datasource:
+#    dynamic:
+#      druid:
+#        #配置初始化大小/最小/最大
+#        initial-size: 1
+#        min-idle: 1
+#        max-active: 20
+#        #获取连接等待超时时间
+#        max-wait: 60000
+#        #间隔多久进行一次检测，检测需要关闭的空闲连接
+#        time-between-eviction-runs-millis: 60000
+#        #一个连接在池中最小生存的时间
+#        min-evictable-idle-time-millis: 300000
+#        validation-query: SELECT 'x'
+#        test-while-idle: true
+#        test-on-borrow: false
+#        test-on-return: false
+#        #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+#        pool-prepared-statements: false
+#        max-pool-prepared-statement-per-connection-size: 20
+#        filters: stat,config
+#        stat-view-servlet:
+#          enabled: true
+#          url-pattern: "/druid/*"
+#          #  禁用HTML页面上的“Reset All”功能
+#          reset-enable: false
+#          # 登录名
+#          login-username: admin
+#          # 登录密码
+#          login-password: ENC(7+z7NSC7T8Y+FgrPZRmq3A70Vj9Tlv4ZcqKHqqZf8ljsZDig+dTt/wyieTQijKX9)
+#          allow: localhost
+#        connect-properties:
+#          config.decrypt: true
+#  #        config.decrypt.key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJdDBwtyO7GM9fxIgcEoIT9jI7I6eNmTQ0lkA2eGYFAaj8x9T5+GWvrXQ7rkpYhKTY4MXmTRhw/R9XXdWYxmaOUCAwEAAQ==
+#          config.decrypt.key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIO7LKFXz6OYovv1zrxqKx7wJ2wBDJGBOYvbmYEcNrVy12q82Pxz6ZmexmoSpeR00JHbdVDcNSC1KFWYcnGz3EcCAwEAAQ==
+#      primary: dbcastest
+#      datasource:
+#        dbcastest:
+#          url: jdbc:mysql://192.168.50.113:3306/hgcyaddb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          username: yuqing
+#          password: LdyJFKOnC8TEGTRtepANCpxh2NxX5mdOTOEeOq1s4dLReJqO7zCMdfIwf42mE+nCXiJHnxua6uioLoLtg2bEpg==
+#          druid:
+#            public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIO7LKFXz6OYovv1zrxqKx7wJ2wBDJGBOYvbmYEcNrVy12q82Pxz6ZmexmoSpeR00JHbdVDcNSC1KFWYcnGz3EcCAwEAAQ==
+#        db2:
+#          url: jdbc:mysql://192.168.50.113:3306/cas_cpsn?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          username: yuqing
+#          password: '!Hg123456'
+
+feign:
+  sentinel:
+    enabled: true
+  client:
+    config:
+      default:
+        # 连接超时时间 默认2S
+        connectTimeout: 50000
+        # 请求处理时间 默认 5S
+        readTimeout: 30000
+
+##工作流核心模块访问路径
+core:
+  url: http://127.0.0.1:26858
+
+swagger:
+  enabled: true
+ufile:
+  uFileURL: http://192.168.50.160:18001/ufile/up/
+  uFileURLOut: https://ufile160.in.hgzp.cn/ufile/up/
+  uFileExists: https://ufile160.in.hgzp.cn/ufile/api/exists/
+  uWebURL: https://ufile160.in.hgzp.cn/ufile/imgsrv/resize/
+  uFileDown: https://ufile160.in.hgzp.cn/ufile/down/
+  uExtURL: https://ufile160.in.hgzp.cn/ufile/app/srv/fileext/
+  uPermanent: http://192.168.50.160:18001/ufile/api/permanent/
+  videoURL: https://ufile160.in.hgzp.cn/videoplay/
+  videoScreenShot: https://ufile160.in.hgzp.cn/videoshot/
+  videoTransWaterMark: http://192.168.50.160:18020/watermark/
+  videoTranprogress: http://192.168.50.160:18020/tranprogress/
+  defaultmode0: true
+  videoFileDown: https://ufile160.in.hgzp.cn/ufile/app/srv/videojump/
+  saveFileUrl: https://ufile160.in.hgzp.cn/sharenotify
+  mediaInfoUrl: http://192.168.50.160:18020/mediainfo
+  fileInfoUrl: http://192.168.50.160:18010/ufile/app/srv/fileinfo/
+  getscreenshotsha1: http://192.168.50.160:18020/getscreenshotsha1/
+
+
+
+
+
+#======================================= 加密等相关参数 ===========================================================================
+# 语言
+language: zh-cn
+
+#des.key 跳转其他系统双方约定
+des.key: dzmixmedia1#5@455
+#private_key  盐值
+private_key: adminAndRoot1234
+
+HighSecurityLevel: false
+

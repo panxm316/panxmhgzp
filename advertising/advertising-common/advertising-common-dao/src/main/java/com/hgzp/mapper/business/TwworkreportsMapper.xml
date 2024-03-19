@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.business.TwworkreportsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Twworkreports">
+        <id column="id" property="id" />
+        <result column="deptid" property="deptid" />
+        <result column="deptname" property="deptname" />
+        <result column="employid" property="employid" />
+        <result column="employname" property="employname" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="denddate" property="denddate" />
+        <result column="dcreatedate" property="dcreatedate" />
+        <result column="sworkmode" property="sworkmode" />
+        <result column="iworktype" property="iworktype" />
+        <result column="customerid" property="customerid" />
+        <result column="customername" property="customername" />
+        <result column="sworkcontent" property="sworkcontent" />
+        <result column="sfeedback" property="sfeedback" />
+        <result column="splan" property="splan" />
+        <result column="squestions" property="squestions" />
+        <result column="iapprovestatus" property="iapprovestatus" />
+        <result column="icheckerid" property="icheckerid" />
+        <result column="scheckername" property="scheckername" />
+        <result column="dcheckdate" property="dcheckdate" />
+        <result column="scheckopinions" property="scheckopinions" />
+        <result column="buse" property="buse" />
+        <result column="sremark" property="sremark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, deptid, deptname, employid, employname, dstartdate, denddate, dcreatedate, sworkmode, iworktype, customerid, customername, sworkcontent, sfeedback, splan, squestions, iapprovestatus, icheckerid, scheckername, dcheckdate, scheckopinions, buse, sremark
+    </sql>
+
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TbdeptMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbdept">
+        <id column="id" property="id" />
+        <result column="sdeptname" property="sdeptname" />
+        <result column="parentid" property="parentid" />
+        <result column="idepth" property="idepth" />
+        <result column="sndomainou" property="sndomainou" />
+        <result column="bflagrole" property="bflagrole" />
+        <result column="bflagroot" property="bflagroot" />
+        <result column="sdeptalias" property="sdeptalias" />
+        <result column="binner" property="binner" />
+        <result column="sguidcas" property="sguidcas" />
+        <result column="bcaspush" property="bcaspush" />
+        <result column="idataversion" property="idataversion" />
+        <result column="isort" property="isort" />
+        <result column="buse" property="buse" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, sdeptname, parentid, idepth, sndomainou, bflagrole, bflagroot, sdeptalias, binner, sguidcas, bcaspush, idataversion, isort, buse
+    </sql>
+
+    <update id="updateBuseByIdList">
+        update tbdept
+        set buse = #{buse,jdbcType=BOOLEAN}
+        where id in
+        <foreach collection="idList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updatePidIdepthByIdList">
+        update tbdept
+        set parentid = #{parentid},
+        idepth = #{idepth}
+        where id in
+        <foreach collection="idList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+
+
+
+</mapper>

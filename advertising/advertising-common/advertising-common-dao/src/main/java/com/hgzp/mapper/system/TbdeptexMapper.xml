@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.system.TbdeptexMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbdeptex">
+        <id column="id" property="id" />
+        <result column="deptid" property="deptid" />
+        <result column="parentid1" property="parentid1" />
+        <result column="parentid2" property="parentid2" />
+        <result column="parentid3" property="parentid3" />
+        <result column="parentid4" property="parentid4" />
+        <result column="parentid5" property="parentid5" />
+        <result column="parentname1" property="parentname1" />
+        <result column="parentname2" property="parentname2" />
+        <result column="parentname3" property="parentname3" />
+        <result column="parentname4" property="parentname4" />
+        <result column="parentname5" property="parentname5" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, deptid, parentid1, parentid2, parentid3, parentid4, parentid5, parentname1, parentname2, parentname3, parentname4, parentname5
+    </sql>
+
+</mapper>

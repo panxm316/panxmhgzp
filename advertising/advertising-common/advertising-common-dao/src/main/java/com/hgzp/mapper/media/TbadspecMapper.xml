@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgzp.mapper.media.TbadspecMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hgzp.core.model.Tbadspec">
+        <id column="id" property="id" />
+        <result column="mediaid" property="mediaid" />
+        <result column="stype" property="stype" />
+        <result column="sname" property="sname" />
+        <result column="nwidth" property="nwidth" />
+        <result column="nheight" property="nheight" />
+        <result column="narea" property="narea" />
+        <result column="ipknum" property="ipknum" />
+        <result column="sspecdisplay" property="sspecdisplay" />
+        <result column="dstartdate" property="dstartdate" />
+        <result column="denddate" property="denddate" />
+        <result column="sremark" property="sremark" />
+        <result column="isort" property="isort" />
+        <result column="buse" property="buse" />
+        <result column="bclassified" property="bclassified" />
+        <result column="bbigclassified" property="bbigclassified" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, mediaid, stype, sname, nwidth, nheight, narea, ipknum, sspecdisplay, dstartdate, denddate, sremark, isort, buse, bclassified, bbigclassified
+    </sql>
+
+
+    <update id="updateDstartdateByAll">
+        update Tbadspec
+        set dstartdate = #{dstartdate}
+    </update>
+
+    <update id="updateDenddateByAll">
+        update Tbadspec
+        set denddate = #{denddate}
+    </update>
+
+    <update id="updateDenddateByIdList">
+        update Tbadspec
+        set denddate = #{denddate}
+        where id in
+        <foreach collection="idList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+</mapper>
